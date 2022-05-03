@@ -1,0 +1,208 @@
+@import "../../Design/color.scss";
+
+.upload-header-container {
+  background: #ffffff;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 1%;
+  font-size: 14px;
+  line-height: 22px;
+  color: #363641;
+}
+.upload-list-container {
+  background: rgba(217, 217, 217, 0.1);
+  border: 1px solid #f1f1f1;
+  box-sizing: border-box;
+  border-radius: 0px 10px 0px 0px;
+  height: 50vh;
+}
+.upload-file-item {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 1%;
+  font-size: 14px;
+  line-height: 22px;
+  color: #665e5e;
+  display: flex;
+  align-items: center;
+  padding-right: 2px;
+  cursor: pointer;
+}
+.quick-look-card-container-disable {
+  background: #fcfcfc;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 70%;
+  padding: 5% 4%;
+}
+.quick-look-card-container {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 70%;
+  padding: 5% 4%;
+  cursor: pointer;
+}
+.quick-look-card-container-active {
+  background: #ffffff;
+  border: 1px solid #fbce2f;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 70%;
+  padding: 5% 4%;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 10px rgba(251, 206, 47, 0.26));
+}
+
+.quick-look-card-container-disable .quick-look-sub-title {
+  color: #818181;
+}
+.quick-look-card-container-disable .quick-look-title {
+  color: #818181;
+}
+.quick-look-sub-title {
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: #8c8c8c;
+}
+.quick-look-title {
+  font-family: Arvo;
+  font-size: 30px;
+  line-height: 37px;
+  color: $color-lilac;
+}
+.upload-button-position {
+  position: absolute;
+  left: 36%;
+  bottom: 40%;
+}
+.file-name-style {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #665e5e;
+  display: flex !important;
+}
+.file-name-style .dotted-line {
+  cursor: pointer;
+}
+.filter-btn-class img {
+  cursor: pointer;
+}
+.uploadedby-style {
+  font-size: 14px;
+  line-height: 22px;
+  color: #8d8d8d;
+  cursor: default;
+}
+.filesize-style {
+  font-size: 12px;
+  line-height: 10px;
+  letter-spacing: 0.05em;
+  color: #8d8d8d;
+}
+.nanobar {
+  height: 3px;
+  width: 30%;
+  border-radius: 0px 20px 20px 0px;
+  background: linear-gradient(90deg, #ffef5a 0%, #fbce2f 100%);
+}
+.nanobar-failed {
+  height: 3px;
+  width: 30%;
+  background: #e37973;
+  border-radius: 0px 20px 20px 0px;
+}
+
+/*Tool Tip */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  font-family: Arial;
+  z-index: unset;
+  opacity: 1;
+}
+
+.info-menu-container .tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #ffffff;
+  color: #665e5e;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 35%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ececec;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  backdrop-filter: blur(4px);
+  // background: rgba(36, 36, 36, 0.9);
+  background: #393939;
+  border: 1px solid #ececec;
+  color: #fbfbfb;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 24px;
+  padding: 7%;
+  border-radius: 3px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.message-link {
+  font-family: Roboto;
+  font-size: 15px;
+  display: flex;
+  margin-top: 3%;
+  justify-content: flex-end;
+  color: #88305f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.mailto-riverus {
+  font-family: Roboto;
+  font-size: 14px;
+  color: #88305f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#upload-bottom-row {
+  font-size: 13px;
+  color: #4b4b4b;
+  font-family: Arvo;
+  margin-top: 2%;
+}
+#file-type-name {
+  color: #ffffff;
+  background-color: #996c84;
+  padding: 0 1px;
+  margin: 0 5px;
+}

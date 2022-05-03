@@ -1,0 +1,308 @@
+@import "../../Design/color.scss";
+
+/*Lines Loader*/
+
+.animated-background {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 100%;
+  position: relative;
+}
+.content-placeholder {
+  height: 2px;
+  margin-top: 3px;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/*Riverus Loader*/
+
+.default-loader {
+  height: 120px;
+}
+.wrapper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 1% auto;
+}
+#signup_loader_logo {
+  text-align: center;
+  padding: 28px;
+}
+.wrapper .pie {
+  width: 50%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  position: absolute;
+  background: transparent;
+  border: 4px solid #2d9cdb;
+}
+.wrapper .spinner {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  z-index: 0;
+  border-right: none;
+  animation: rotate 1s linear infinite;
+}
+
+.wrapper .loader_progress-25 {
+  padding: 18px;
+  height: 85%;
+  margin: 8px;
+  width: 85%;
+  position: absolute;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  border-top-color: #ed9d56;
+  animation: proRotate25 5s linear 1;
+}
+
+.wrapper .loader_progress-50 {
+  padding: 18px;
+  height: 85%;
+  margin: 8px;
+  width: 85%;
+  position: absolute;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  animation: proRotate50 5s both 1;
+}
+.wrapper .loader_progress-75 {
+  padding: 18px;
+  margin: 8px;
+  height: 85%;
+  width: 85%;
+  position: absolute;
+  border: 4px solid #ed9d56;
+  border-radius: 50%;
+  border-left-color: transparent;
+  animation: proRotate75 5s both 1;
+}
+.wrapper .loader_progress-100 {
+  padding: 18px;
+  margin: 8px;
+  height: 85%;
+  width: 85%;
+  position: absolute;
+  border: 4px solid #ed9d56;
+  border-radius: 50%;
+  transform-origin: center;
+  animation: proRotate100 5s both 1;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    z-index: 0;
+  }
+}
+
+@keyframes proRotate25 {
+  0% {
+    border-top-color: transparent;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(40deg);
+  }
+}
+
+@keyframes proRotate50 {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    transform: rotate(0deg);
+  }
+  100% {
+    border-top-color: #ed9d56;
+    border-right-color: #ed9d56;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes proRotate75 {
+  0% {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    transform: rotate(0deg);
+  }
+  100% {
+    border-top-color: #ed9d56;
+    border-right-color: #ed9d56;
+    border-bottom-color: #ed9d56;
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes proRotate100 {
+  0% {
+    border-color: transparent;
+    transform: rotate(0deg);
+  }
+  100% {
+    border-color: #ed9d56;
+    transform: rotate(360deg);
+  }
+}
+
+#riverus-loader .single-chart {
+  width: 100%;
+  justify-content: space-around;
+}
+
+#riverus-loader .circular-chart {
+  display: block;
+  margin: 20px auto;
+  max-width: 80%;
+  max-height: 250px;
+  width: 80%;
+}
+
+.riverus-loader {
+  fill: none;
+  animation: progress 1s ease-out forwards;
+}
+
+.riverus-logo svg {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.riverus-logo {
+  width: 40px;
+  height: 48px;
+  background-image: url("../../../public/static_images/mobile-navbar-icon.svg");
+  background-size: cover;
+  margin: 20px 0;
+}
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+#stroke-success .riverus-loader {
+  stroke: #ed9d56 !important;
+}
+#stroke-failure .riverus-loader {
+  stroke: #9f0000 !important;
+}
+
+/*Bar Loader*/
+.loader-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 150px;
+}
+.loader-bar {
+  animation: bar-loading infinite 1s;
+  background: $color-lilac;
+  width: 1rem;
+  height: 4rem;
+  margin: 0 0.2rem;
+}
+.loader-bar:nth-child(1) {
+  animation-delay: 0.8s;
+}
+.loader-bar:nth-child(2) {
+  animation-delay: 1.4s;
+}
+.loader-bar:nth-child(3) {
+  animation-delay: 1.8s;
+}
+.loader-bar:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.loader-bar:nth-child(5) {
+  animation-delay: 1s;
+}
+.loader-bar:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.loader-bar:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+@keyframes bar-loading {
+  25% {
+    height: 1rem;
+    background-color: lightgrey;
+  }
+  75% {
+    height: 5rem;
+    background-color: lightgrey;
+  }
+}
+
+/*Blurry Loader*/
+@keyframes blur-load {
+  0% {
+    opacity: 0.08;
+    filter: blur(5px);
+    letter-spacing: 3px;
+  }
+}
+
+.blurry-loader-animate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: auto;
+  font-family: Muli;
+  animation: blur-load 1.2s infinite 0s ease-in-out;
+  animation-direction: alternate;
+  text-shadow: 0 0 1px white;
+  color: #88305f;
+}
+
+/* Circle Loader */
+
+.circle-loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #88305f;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,70 @@
+@import '../../../Design/color.scss';
+
+.sidenav-layout {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 40px;
+    height: 96%;
+    width: 97px;
+    background: #FFFFFF;
+    /*Change*/
+}
+
+.sidenav-title-layout {
+    font-size: 12px;
+    line-height: 22px;
+    display: block;
+    text-align: center;
+    padding-right: 0;
+}
+
+.sidenav-title-layout:hover {
+    font-size: 12px;
+    line-height: 22px;
+    display: block;
+    text-align: center;
+    padding-right: 0;
+    background: #F8F8F8;
+}
+
+.sidenav-title {
+    color: #818181;
+    height: 75px;
+}
+
+.sidenav-title-active {
+    border-right: 3.5px solid $nav-active-color;
+    background: #F8F8F8;
+    height: 75px;
+}
+
+.sidenav-text {
+    color: #818181;
+}
+
+.sidenav-text-active {
+    color: $nav-active-color;
+}
+
+#collapsed-menubar {
+    padding: 30% 50% 30% 30%;
+}
+
+.sidenav-title-layout .tooltiptext {
+    top: 0;
+    left: 100%;
+    margin-left: 0;
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    height: 100%;
+    color: #818181;
+    background: #FBFAFA;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}

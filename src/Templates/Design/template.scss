@@ -1,0 +1,84 @@
+.mt-6 {
+    margin-top: 4rem !important;
+}
+
+.template-row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.template-count-box {
+    border: 1px solid #EAEAEA;
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 47px;
+    box-shadow: 0 4px 0 10px 10px;
+    padding: 10px;
+    font-size: 10px;
+    color: #8C8C8C;
+    width: 200px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.template-count {
+    font-size: 30px;
+    color: #996C84;
+}
+
+.margin-0 {
+    margin-bottom: 0;
+}
+
+.create-btn {
+    background: #FFEF5A;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFEF5A, #FBCE2F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFEF5A, #FBCE2F);
+    border: none;
+    font-size: 14px;
+    color: #626262;
+}
+
+.template-card {
+    box-shadow: 0px 2px 20px 0px #8787871A;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.template-icon {
+    width: 31px;
+}
+
+@mixin avatar($size) {
+    width: $size;
+    height: $size;
+    background-color: #df0d00;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+
+    .initials {
+        position: relative;
+        // top: $size * 0.1;
+        top: 5px;
+        font-size: $size * 0.4;
+        line-height: $size * 0.7;
+        color: #fff;
+        font-family: Roboto;
+        font-weight: normal;
+    }
+}
+
+.avatar-circle {
+    @include avatar(100px);
+}
+
+.avatar-circle-sm {
+    @include avatar(35px);
+}
+
+.avatar-circle-lg {
+    @include avatar(250px);
+}

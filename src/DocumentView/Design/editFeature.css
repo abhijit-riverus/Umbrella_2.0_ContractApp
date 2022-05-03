@@ -1,0 +1,202 @@
+.title-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #dddddd;
+  font-size: 14px;
+  line-height: 22px;
+  color: #626262;
+  font-family: "Inter";
+  padding-left: 0.5rem;
+}
+.add-datapoint {
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 22px;
+  color: #88305f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.edit-title-header {
+  font-family: "Inter";
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #8d8d8d;
+}
+#save-btn {
+  padding: 1px 35px;
+  font-family: Roboto;
+  font-size: 14px;
+  display: inline-flex;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #424242;
+}
+.tag-type-hoverable {
+  text-decoration: underline dotted;
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #626262;
+}
+.raise-request-container {
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  color: #686868;
+}
+.tag-input {
+  width: 98%;
+  padding: 1% 2%;
+  padding-right: 3%;
+  padding-left: 0.5rem;
+  border: 1px solid #dddddd;
+  font-size: 12px;
+  line-height: 22px;
+  font-family: "Inter";
+  outline: none;
+  display: flex;
+}
+.tag-label {
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fafafa;
+}
+.tag-label span {
+  margin-top: 1%;
+  padding: 0 5%;
+  line-height: 20px;
+  border-radius: 2px;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+  margin-left: 1.5rem;
+}
+.tag-input-disabled {
+  background: #e2e2e2;
+  border: 1px solid #dddddd;
+  font-size: 10px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #8e8e8e;
+  width: 98%;
+  /* height: 30px; */
+  display: flex;
+  font-family: "Inter";
+}
+
+.tag-input-disabled input::placeholder {
+  color: #565656;
+}
+.tag-input-suggestion {
+  width: 100%;
+  padding: 1% 3%;
+  border: none;
+  font-size: 12px;
+  line-height: 22px;
+  font-family: "Inter";
+  outline: none;
+  background: white;
+  font-size: 14px;
+  color: #626262;
+}
+.tag-input-suggestion:hover {
+  background: #fff4cd;
+}
+.char-limit {
+  font-family: "Inter";
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #666666;
+}
+.tag-autocomplete-container {
+  max-width: 93%;
+}
+.tag-autocomplete-container .custom-scrollbar-checkbox {
+  padding-right: 0;
+}
+.edit-date-title {
+  font-family: "Inter";
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #a06685;
+  font-weight: 600;
+  text-decoration: none !important;
+  /* margin-bottom: 5%; */
+}
+.add-more-cont {
+  display: flex;
+  align-items: center;
+}
+.link-to {
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid;
+  font-family: "Inter";
+  line-height: 22px;
+  letter-spacing: 0.02em;
+}
+.link-to-info {
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: #ffedac;
+  margin: 1% 0%;
+  background-color: black;
+  padding: 1.5%;
+}
+.simple-input {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 12px;
+  line-height: 22px;
+  font-family: "Muli";
+  outline: none;
+  display: flex;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+.text-input {
+  width: 98%;
+  padding: 1% 2%;
+  padding-right: 3%;
+  padding-left: 0.5rem;
+  border: 1px solid #dddddd;
+  font-size: 12px;
+  line-height: 22px;
+  font-family: "Inter";
+  outline: none;
+  display: flex;
+}
+
+#duration-container {
+  background: #FFFFFF;
+  /* border: 1px solid #DDDDDD; */
+  box-sizing: border-box;
+}
+
+#amount-container {
+  height: 153px;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+}
+/* input[type=date] {
+    text-align: right;
+}
+input[type="date"]:before {
+    color: lightgrey;
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+    font-size: 10px;
+}
+input[type="date"]:focus:before {
+    content: '' !important;
+} */

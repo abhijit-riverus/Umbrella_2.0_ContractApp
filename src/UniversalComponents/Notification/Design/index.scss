@@ -1,0 +1,157 @@
+#notification-container {
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: 5vh;
+  // border: .5px solid #ffefd7;
+  border-radius: 5px;
+  box-shadow: 0 0.5px 3px rgba(0, 0, 0, 0.25);
+  z-index: -1;
+  overflow-y: auto;
+  padding: 0px 0px;
+  padding-bottom: 20rem;
+
+  .header-title {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #323232;
+    top: 7vh;
+    padding: 0px 12px;
+    padding-right: 0%;
+  }
+
+  .count {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #88305f;
+  }
+}
+
+#notification-type-container {
+  background-color: white;
+  border-bottom: 1px solid #d1d1d1;
+  color: black;
+  padding: 5px 5px;
+
+  .task-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #323232;
+    text-align: left;
+  }
+
+  .task-title:hover {
+    //cursor: "pointer";
+    text-decoration: underline;
+  }
+  .file-name {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: underline;
+    color: #88305f;
+  }
+
+  .clause-bi-name {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #757575;
+  }
+
+  .completed {
+    padding: 8px 0px;
+
+    background: #bbf7de;
+    border: 1px solid #fbce2f;
+    box-sizing: border-box;
+    border-radius: 12.5px;
+    // text-format
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+    color: #146343;
+    text-align: center;
+  }
+
+  .not-started {
+    padding: 8px 0px;
+    background: #ece4fa;
+    border-radius: 12.5px;
+    // text-format
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+    color: #6025d3;
+    text-align: center;
+  }
+
+  .in-progress {
+    padding: 8px 0px;
+    background: #ffe8c2;
+    border-radius: 12.5px;
+    // text-format
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+    color: #de7100;
+    text-align: center;
+  }
+
+  .status {
+    border: 1px solid #bebebe;
+    box-sizing: border-box;
+    border-radius: 12.5px;
+    // text-format
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+    color: #616161;
+    text-align: center;
+    padding: 7px 0px;
+    background: white;
+  }
+
+  .alert-date {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #707070;
+    text-align: end;
+  }
+}
+
+#notification-type-container:hover {
+  background: #fffef0;
+}

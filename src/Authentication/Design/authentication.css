@@ -1,0 +1,9 @@
+.sign-in-view {
+	margin-top: 20px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+}
+.full-width-text-input {
+	width: 100%;
+}

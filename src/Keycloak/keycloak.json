@@ -1,0 +1,12 @@
+{
+	"realm": "express-realm",
+	"auth-server-url": "http://localhost:8080/auth/",
+	"ssl-required": "external",
+	"resource": "umbrella",
+	"verify-token-audience": true,
+	"credentials": {
+		"secret": "Bh74Zjfhi20wGX0hD7tFsYEnDzEwOuH8"
+	},
+	"confidential-port": 0,
+	"policy-enforcer": {}
+}

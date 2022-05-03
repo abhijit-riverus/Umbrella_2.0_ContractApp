@@ -1,0 +1,223 @@
+
+
+.folder-heading-text {
+    color: #88305F;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 3px solid #88305F;
+}
+
+.clause-library-heading-row {
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    height: 35px;
+}
+
+.clause-folder-view {
+    box-shadow: 0px 2px 20px rgba(135, 135, 135, 0.1);
+    height: 75vh;
+}
+
+.clause-folder-heading-text {
+    font-family: Inter;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    color: #1A1A1A;
+    padding: 5px 10px;
+}
+
+.clause-folder-heading-row {
+    border-bottom: 1px solid #E2E2E2;
+    height: 35px;
+}
+
+.clause-library-header-test {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+    color: #434343;
+    padding: 5px 10px;
+}
+
+.add-folder-heading {
+    font-family: Mulish;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+    color: #88305F;
+}
+
+.add-folder-heading-inactive {
+    font-family: Mulish;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+    color: #CECECE;
+}
+
+.clause-folder-list-row {
+    height: 35px;
+    cursor: pointer;
+}
+
+.clause-library-row :hover {
+    background: #F5F5F5;
+    z-index: 2;
+}
+
+.clause-folder-row {
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.clause-folder-text {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #4E4E4E;
+}
+
+.clause-expand-icn {
+    width: 12px;
+}
+
+.clause-folder-icn {
+    width: 15px;
+    height: 18px;
+}
+
+.clause-icn {
+    width: 13px;
+    height: 15px;
+}
+
+.clause-add-folder-icn {
+    width: 16px;
+}
+
+.clause-copy-icn {
+    width: 16px;
+}
+
+.clause-column-padding {
+    padding: 5px 10px;
+} 
+
+
+.folder-input {
+  width: 150px;
+  padding: 1px 5px;
+  border: 1px solid #dddddd;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "Inter";
+  outline: none;
+  display: flex;
+  letter-spacing: 0.01em;
+  margin: 2px 2px;
+  border-radius: 2px;
+}
+
+.add-folder-name-text {
+    font-family: Mulish;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 5px 7px;
+}
+
+.create-folder-yellow-btn {
+    border: none;
+    background: linear-gradient(180deg, #FFEF5A 0%, #FBCE2F 100%);
+    box-shadow: 1px 2px 10px rgba(6, 1, 48, 0.2);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: normal;
+    font-family: Roboto;
+    color: #4B4B4B;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    padding: 4px 35px;
+    display: inline-flex;
+    line-height: 22px;
+    margin: 1px;
+}
+.create-folder-yellow-btn:active {
+    outline: none;
+}
+.text-white {
+    color: white;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 8px solid #2A2A2A;
+    position: absolute;
+    left: -8px;
+    top: 8px;
+}
+
+.custom-div-add-clause-library {
+    position: absolute;
+    width: 265px;
+    height: 33px;
+    background: #2A2A2A;
+    border: 2px solid #FBCE2F;
+    box-sizing: border-box;
+    border-radius: 5px;
+    top: 3px;
+    z-index: 17;
+    padding: 2px 8px;
+}
+
+
+.yellow-link {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-decoration: underline;
+    text-align: left;
+    color: #FBCE2F;
+}
+
+.clause-type-grey {
+    color: #737373;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+}
+.clause-library-file-text {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: left;
+    color: #88305F;
+}

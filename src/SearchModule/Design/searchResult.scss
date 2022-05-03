@@ -1,0 +1,79 @@
+@import '../../Design/color.scss';
+
+.searchdetails-card {
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    max-width: 95%;
+    font-family: Muli;
+    font-style: normal;
+    font-weight: normal;
+    cursor: default;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.title {
+    font-size: 18px;
+    line-height: 23px;
+    color: $color-lilac;
+    cursor: pointer;
+}
+.contract-type {
+    font-family: Rubik;
+    font-size: 12px;
+    line-height: 14px;
+    color: #6D6E71;
+}
+.subtitle {
+    font-size: 10px;
+    line-height: 13px;
+    color: #78797C;
+    margin-left: -5px;
+}
+.content {
+    font-size: 14px;
+    line-height: 18px;
+    color: #5A5A5A;
+}
+.highlight {
+    font-weight: bold;
+    background-color: $highlight-yellow;
+}
+.results-for {
+    font-family: Muli;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #3C3D3B;
+}
+.err-msg-header {
+    font-family: Muli;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 60px;
+    padding-top: 2%;
+    background: #FBFBFB;
+    color: #3C3D3B;
+}
+.err-msg-container {
+    background: rgba(217, 217, 217, 0.1);
+    border: 1px solid #F1F1F1;
+    height: 80vh;
+}
+.err-msg-text {
+    padding-left: 40%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: #3C3D3B;
+}
+.err-msg-text li {
+    line-height: 30px;
+}
+.err-msg-search-term {
+    color: #88305F;
+    font-weight: bold;
+}

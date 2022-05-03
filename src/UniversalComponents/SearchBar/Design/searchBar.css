@@ -1,0 +1,36 @@
+#search-bar-heading-text {
+    font-size: 17px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+.searchbar-container {
+    z-index: 1000;
+    margin-top: 5%;
+}
+.input-bar-padding {
+    background: #FFFFFF;
+    border: 1.5px solid #FFEFD7;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    padding-right: 0;
+}
+#searchbar-input-box{
+    outline: none;
+    width: 90%;
+    font-family: Muli;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+    border: none;
+}
+#search-btn {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    color: #4B4B4B;
+}

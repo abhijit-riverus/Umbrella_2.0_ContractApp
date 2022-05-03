@@ -1,0 +1,80 @@
+.static-content {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+}
+#app-overlay {
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+}
+/* No claims*/
+
+#fall-back-container{
+    background-color: white;
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    text-align: center;
+    border-radius: 25px;
+    border: 1px solid #FFEFD7;
+    padding: 3% 6%;
+}
+#fall-back-container-mb{
+    background-color: white;
+    position: absolute;
+    width: 90%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    text-align: center;
+    border-radius: 25px;
+    border: 1px solid #FFEFD7;
+    padding: 3% 6%; 
+}
+#fall-back-container-mb #fall-back-heading{
+    font-size: 14px;
+}
+#fall-back-container-mb #fall-back-sub-heading{
+    font-size: 16px;
+}
+#fall-back-container-mb #fall-back-content{
+    font-size: 14px;
+}
+#no-claims-div #intropage-tag-line{
+    margin-top: 45%;
+}
+#fall-back-heading{
+    color: black;
+    font-size: 20px;
+    font-family: 'Muli';
+    margin-top: -2%;
+}
+#fall-back-sub-heading{
+    font-size: 23px;
+    font-weight: bold;
+    color: #3D3D3D;
+}
+#fall-back-content{
+    color: #696969;
+    font-size: 23px;
+}
+#fall-back-content a{
+    color: black;
+}
+#goto-product-button{
+    text-decoration: underline;
+    margin: auto;
+    color: #E98B35;
+    cursor: pointer;
+}
