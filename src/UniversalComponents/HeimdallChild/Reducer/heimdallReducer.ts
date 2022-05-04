@@ -1,5 +1,5 @@
 import HeimdallState, { getDefaultHeimdallState } from '../State/heimdallState';
-import { heimdallActions, REVIVETOKEN_SUCCESS, REVIVETOKEN_FAILURE, REVIVETOKEN, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE, PAGE_REFRESH, OFFLINE, ONLINE, ATTACHPASS, ACTIVATEPASS } from '../Actions/definitions';
+import { heimdallActions, REVIVETOKEN_SUCCESS, REVIVETOKEN_FAILURE, REVIVETOKEN, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE, PAGE_REFRESH, OFFLINE, ONLINE, ATTACHPASS, ACTIVATEPASS, GOTOSTYLLUS, STYLLUS, GOTOUMBRELA, UMBRELLA } from '../Actions/definitions';
 import HeimdallUtil from '../HeimdallUtil/heimdallUtil';
 import { AUTHURL } from '../../../Configuration/global';
 
@@ -26,20 +26,32 @@ export default function HeimdallReducer(state: HeimdallState = getDefaultHeimdal
         case LOGOUT_FAILURE: {
             return { ...state };
         }
-        case PAGE_REFRESH : {
-            return { ...state, refreshPage: action.payload.refreshPage}
+        case PAGE_REFRESH: {
+            return { ...state, refreshPage: action.payload.refreshPage }
         }
         case OFFLINE: {
             return { ...state, systemInternetState: false, occurence: 1 };
         }
         case ONLINE: {
-            return { ...state, systemInternetState: true};
+            return { ...state, systemInternetState: true };
         }
         case ATTACHPASS: {
-            return { ...state, attachPass:action.payload.attachPass }
+            return { ...state, attachPass: action.payload.attachPass }
         }
         case ACTIVATEPASS: {
-            return{ ...state}
+            return { ...state }
+        }
+        case GOTOSTYLLUS: {
+            return {
+                ...state,
+                platform: STYLLUS
+            }
+        }
+        case GOTOUMBRELA: {
+            return {
+                ...state,
+                platform: UMBRELLA
+            }
         }
         default: {
             return state;

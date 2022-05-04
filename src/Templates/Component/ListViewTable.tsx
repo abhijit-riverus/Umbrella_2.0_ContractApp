@@ -10,7 +10,7 @@ const ListViewTable = (props: Props) => {
 
     const [templates, setTempates] = useState<TemplateData[]>([]);
     useEffect(() => {
-        setTempates(props.templatesData);
+        // setTempates(props.templatesData);
         console.log(props.templatesData);
     }, []);
 

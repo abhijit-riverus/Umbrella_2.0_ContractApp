@@ -11,6 +11,7 @@ export function mapStateToProps(appState: StoreTree, ownProps: any) {
 		tokenClaims: appState.heimdall.claims,
 		visibility: appState.searchBar.visibility,
 		logoutLoader: appState.heimdall.logoutLoader,
+		platform: appState.heimdall.platform
 	};
 }
 export function mapDispatchToProps(dispatch: any, ownProps: any) {

@@ -28,7 +28,7 @@ export function getDateFormat(dateOfUpload: string) {
     return value;
 }
 
-export function getCommentTimeFormat(commentTime: string){
+export function getCommentTimeFormat(commentTime: string) {
     var date, newdate, a: any, value: string = '';
     var monthNames = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     if (commentTime !== null) {
@@ -44,7 +44,7 @@ export function getCommentTimeFormat(commentTime: string){
 
 export function getDueDateFormat(dueDate: string) {
     var newdate, date, month, year, value;
-    if(dueDate !== null){
+    if (dueDate !== null) {
         newdate = dueDate.split('-');
         date = newdate[2];
         month = newdate[1];
@@ -72,18 +72,18 @@ export function getDashboardDate(effDate: string) {
     let eff = effDate + '';
     let splitStr = eff.split('-');
     let day = splitStr[2];
-    let month  = splitStr[1];
+    let month = splitStr[1];
     let year = splitStr[0];
     let value = day + '/' + month + '/' + year;
     return value;
 }
 
 export function getTermDate(termDate: string) {
-    let monthArray= ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    let monthArray = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     let date = termDate + '';
     let splitStr = date.split('-');
-    let month = "" + ( monthArray.indexOf(splitStr[1]) + 1);
-    let day  = splitStr[0];
+    let month = "" + (monthArray.indexOf(splitStr[1]) + 1);
+    let day = splitStr[0];
     let year = splitStr[2];
     let value = day + '/' + month + '/' + year;
     return value;
@@ -108,12 +108,16 @@ export function humanFileSize(bytes: any, si = false, dp = 1) {
 }
 
 export function capitalizeFirstLetter(name: string) {
-    if(name === "addfiles"){
+    if (name === "addfiles") {
         return "Add Files"
-    } else if(name === "documentlibrary"){
+    } else if (name === "documentlibrary") {
         return "Document Library"
-    } else if(name === "clauselibrary" ){
+    } else if (name === "clauselibrary") {
         return "Clause Library"
+    } else if (name === "dataDictionary") {
+        return "Data Dictionary"
+    } else if (name === "draftingReview") {
+        return "Drafting & Review"
     } else {
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
@@ -130,27 +134,27 @@ export function truncateFileName(name: string) {
     }
 }
 
-export function truncateTaskName(name: string){
+export function truncateTaskName(name: string) {
     let str1 = name.slice(0, 15);
     let len = name.length;
-    if(len > 15) {
+    if (len > 15) {
         return str1 + '...';
     } else {
         return name;
     }
 }
 
-export function truncateString(name: string, size: number){
+export function truncateString(name: string, size: number) {
     let str1 = name.slice(0, size + 1);
     let len = name.length;
-    if(len > size) {
+    if (len > size) {
         return str1 + '...';
     } else {
         return name;
     }
 }
 
-export function getTodaysDate(){
+export function getTodaysDate() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -174,10 +178,10 @@ export function textCopyToClipboard(text: string) {
 export function getNormalizedDateToDateString(dateValue: string) {
     //2020-02-01 to 2 FEB 2020
     let dateArray = dateValue.split('-');
-    let monthArray= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let day: string = dateArray[2];
     let year: string = dateArray[0];
-    let month: string =  '';
+    let month: string = '';
     let monthIndex: number = parseInt(dateArray[1], 10);
     monthIndex = monthIndex - 1;
     month = monthArray[monthIndex];

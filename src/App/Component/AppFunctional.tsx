@@ -27,6 +27,7 @@ import {
 import { KeycloakProvider } from "../../Keycloak/lib";
 import Nav from "../../Keycloak/Component/nav";
 import { useKeycloak } from "../../Keycloak/lib";
+import { STYLLUS, UMBRELLA } from "../../UniversalComponents/HeimdallChild/Actions/definitions";
 
 const history = createBrowserHistory();
 
@@ -37,6 +38,7 @@ interface Props {
 	visibility: boolean;
 	toggleSearchBarVisibility: (visibility: boolean) => void;
 	logoutLoader: boolean;
+	platform: string;
 }
 
 interface State {
@@ -49,7 +51,7 @@ const keycloakProviderInitConfig = {
 	onLoad: "login-required",
 };
 
-const App = (props: any) => {
+const App = (props: Props) => {
 	console.log(
 		"🚀 ~ file: AppFunctional.tsx ~ line 58 ~ App ~ props",
 		window.location.href
@@ -77,7 +79,7 @@ const App = (props: any) => {
 			window.location.reload();
 		}
 	};
-	const setupKeycloakWithConfig = () => {};
+	const setupKeycloakWithConfig = () => { };
 	const onKeycloakTokens = (tokens: any) => {
 		console.log(
 			"🚀 ~ file: AppFunctional.tsx ~ line 82 ~ onKeycloakTokens ~ tokens",
@@ -108,7 +110,7 @@ const App = (props: any) => {
 		// keycloak.login();
 	};
 
-	let { isLoggedIn, tokenClaims, visibility, logoutLoader, refreshPage } =
+	let { isLoggedIn, tokenClaims, visibility, logoutLoader, refreshPage, platform } =
 		props;
 	console.log("keycloakConfig", keycloakConfig);
 	const realmName = window.location.href.split("/")[3];
@@ -194,7 +196,4 @@ const App = (props: any) => {
 		);
 };
 
-const TestView = () => {
-	return <h1>Hello World</h1>;
-};
 export default App;

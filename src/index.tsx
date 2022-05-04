@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { mainReducer } from './Utils/MainReducer/mainReducer';
 import App from './App/Container/appCon';
 import heimdallWatcher from './UniversalComponents/HeimdallChild/Saga/heimdallSaga';
-import { logger } from './Utils/Logger/logger';
+// import { logger } from './Utils/Logger/logger';
 import uploadWatcher from './Upload/Saga/uploadSaga';
 import DocumentWatcher from './DocumentView/Saga/documentSaga';
 import searchPageWatcher from './Search/Saga/SearchSaga';
@@ -27,6 +27,7 @@ import clauseLibraryWatcher from './ClauseLibrary/Saga/clauseLibrarySaga';
 import notificationWatcher from './UniversalComponents/Notification/Saga/notificationSaga';
 import newAnalysisWatcher from './NewAnalysis/Saga/newAnalysisSaga';
 import newDashboardWatcher from './NewDashboard/Saga/newDashboardSaga';
+import logger from 'redux-logger';
 
 const sagaMiddleWare = createSagaMiddleware();
 export const store = createStore(mainReducer, applyMiddleware(sagaMiddleWare, logger));

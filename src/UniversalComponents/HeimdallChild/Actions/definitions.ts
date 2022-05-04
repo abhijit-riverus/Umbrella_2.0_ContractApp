@@ -34,6 +34,15 @@ export type POLLSTATUSAPI = typeof POLLSTATUSAPI;
 export const ATTACHPASS = 'ATTACHPASS';
 export type ATTACHPASS = typeof ATTACHPASS;
 
+export const GOTOSTYLLUS = 'GOTOSTYLLUS';
+export type GOTOSTYLLUS = typeof GOTOSTYLLUS;
+
+export const GOTOUMBRELA = 'GOTOUMBRELLA';
+export type GOTOUMBRELA = typeof GOTOUMBRELA;
+
+export const UMBRELLA = 'UMBRELLA';
+export const STYLLUS = 'STYLLUS';
+
 export interface PollStatusAPI {
     type: POLLSTATUSAPI;
 }
@@ -100,6 +109,13 @@ export interface AttachPass {
         attachPass: boolean;
     }
 }
+export interface GotoStyllus {
+    type: GOTOSTYLLUS;
+}
+
+export interface GotoUmbrella {
+    type: GOTOUMBRELA;
+}
 export type heimdallActions = ReviveToken |
     ReviveTokenSuccess |
     ReviveTokenFailure |
@@ -113,4 +129,4 @@ export type heimdallActions = ReviveToken |
     ActivatePass |
     ActivatePassSuccess |
     ActivatePassFailure |
-    AttachPass;
+    AttachPass | GotoStyllus | GotoUmbrella;

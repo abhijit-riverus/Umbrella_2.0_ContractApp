@@ -125,3 +125,11 @@ export const FREEROUTES: RouteInterface[] = [
 		exact: true,
 	},
 ];
+
+export const STYLUSROUTES: RouteInterface[] = [
+	{
+		path: "/template",
+		component: TemplateCon,
+		exact: true,
+	}
+];
