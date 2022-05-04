@@ -11,7 +11,8 @@ export const SITEAPI =
 	"" + process.env.REACT_APP_SITE_API + "my-realm" + "/contracts/";
 
 export const SITE_API_BY_REALM_NAME = (realmName: String) => {
-	return "" + process.env.REACT_APP_SITE_API + realmName + "/contracts/";
+	// return "" + process.env.REACT_APP_SITE_API + realmName + "/contracts/";
+	return "" + process.env.REACT_APP_SITE_API + "contracts/";
 };
 
 export const HOST = "" + process.env.REACT_APP_HOST;

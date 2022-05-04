@@ -33,7 +33,8 @@ export default class Menu extends React.Component<Props> {
 			pageType,
 			platform,
 			gotoStyllus,
-			gotoUmbrella
+			gotoUmbrella,
+			isLoggedIn
 		} = this.props;
 		return (
 			<div className="row">
@@ -69,7 +70,7 @@ export default class Menu extends React.Component<Props> {
 							</span>
 						</div>
 						<div className="col-md-9 pr-0 generic-web-menu">
-							{platform == UMBRELLA ?
+							{platform == UMBRELLA && isLoggedIn ?
 								<button type="button" className="btn btn-warning navigate-btn mb-2" onClick={() => {
 									gotoStyllus();
 									this.props.history.push('/templates')

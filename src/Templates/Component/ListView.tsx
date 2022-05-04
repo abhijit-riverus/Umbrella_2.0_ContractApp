@@ -15,9 +15,7 @@ const ListView = () => {
             templateType: 'NDA',
             owner: ['Abhijit'],
             createdOn: '26 Jan 2021',
-            lastUsed: '2 days ago',
-            status: 'In Progress',
-            format: 'lock'
+            lastUsed: '2 days ago'
         };
         return [template]
     };

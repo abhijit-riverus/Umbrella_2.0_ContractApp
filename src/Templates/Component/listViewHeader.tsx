@@ -119,38 +119,24 @@ export default class ListViewHeader extends Component<Props, State> {
             <>
                 <div className="col-md-12 p-0">
                     <div className="row list-view-header">
-                        <div className="col-md-2 sorting-option" onClick={() => this.setState({ sort: 'title', titleOrder: !titleOrder, fileNameOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('title') })} >
+                        <div className="col-md-3" onClick={() => this.setState({ sort: 'title', titleOrder: !titleOrder, fileNameOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('title') })} >
                             Name
                         </div>
-                        <div className="col-md-2 sorting-option" onClick={() => this.setState({ sort: 'file_name', fileNameOrder: !fileNameOrder, titleOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('file_name') })}>
-                            Document Type
+                        <div className="col-md-3" onClick={() => this.setState({ sort: 'file_name', fileNameOrder: !fileNameOrder, titleOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('file_name') })}>
+                            Template Type
                         </div>
-                        <div className="col-md-2 sorting-option"
+                        <div className="col-md-2"
                             onClick={() => this.setState({ sort: 'clause_name', clauseNameOrder: !clauseNameOrder, titleOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('clause_name') })}
-                            style={{ paddingLeft: '1.3rem' }}
                         >
                             Owner
                         </div>
-                        <div className="col-md-1" style={{ paddingLeft: '0.4rem' }}>
+                        <div className="col-md-2">
                             Created On
                         </div>
-                        <div className="col-md-2 sorting-option"
+                        <div className="col-md-2"
                             onClick={() => this.setState({ sort: 'due', dueOrder: !dueOrder, titleOrder: true, clauseNameOrder: true, progressNameOrder: true, stateNameOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('due') })}
-                        // style={{ right: '2vw', paddingLeft: '1.5rem' }}
                         >
                             Last Used
-                        </div>
-                        <div className="col-md-1 sorting-option"
-                            onClick={() => this.setState({ sort: 'state_name', stateNameOrder: !stateNameOrder, titleOrder: true, clauseNameOrder: true, progressNameOrder: true, dueOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('state_name') })}
-                        // style={{ right: '2vw', paddingLeft: '0.5rem' }}
-                        >
-                            Source
-                        </div>
-                        <div className="col-md-2 sorting-option"
-                            onClick={() => this.setState({ sort: 'progress_name', progressNameOrder: !progressNameOrder, titleOrder: true, clauseNameOrder: true, stateNameOrder: true, dueOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('progress_name') })}
-                        // style={{ paddingLeft: '3.2rem' }}
-                        >
-                            Format
                         </div>
                     </div>
                 </div>

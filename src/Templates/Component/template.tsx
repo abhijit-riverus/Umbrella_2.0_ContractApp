@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
 import SideNavbar from "../../UniversalComponents/SideNavbar/Container/sideNavBarCon";
 import { History } from "history";
 import "../Design/template.scss";
 import ListView from "./ListView";
+import { DialogActions, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabel, Select, MenuItem, Divider, TextField } from '@material-ui/core';
+
 interface Props {
     history: History;
     pageWatcher: (page: string) => void;
+}
+
+interface File {
+    type: String;
+    size: number;
+    name: String;
 }
 const Template = (props: Props) => {
     console.log('template component');
@@ -14,10 +21,48 @@ const Template = (props: Props) => {
         props.pageWatcher("templates");
     }, [])
     const [recentTemplate, setRecentTemplate] = useState([{ name: 'Template 1' }, { name: 'Template 1' }]);
+    const [open, setOpen] = useState(false);
+
+    const [selectTemplate, setSelectTemplate] = useState('');
+    const [showTemplateForm, setShowTemplateForm] = useState(false);
+    const [templateType, setTemplateType] = useState('');
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+    const fileInput = useRef<any>(null);
+    const [templateName, setTemplateName] = useState('');
+    useEffect(() => {
+        if (selectTemplate !== 'upload') {
+            setShowTemplateForm(false);
+        }
+    }, [selectTemplate])
+
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleUpload = () => {
+        fileInput.current.click();
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleSelectTemplateFrom = (event: any) => {
+        setSelectTemplate(event.target.value);
+    };
+
+    const handleTemplateType = (event: any) => {
+        setTemplateType(event.target.value);
+    }
+
+    const handleTemplateName = (event: any) => {
+        setTemplateName(event.target.value);
+    }
     const generateTopHeader = () => {
         return (<>
             <h3>Templates</h3>
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-md-6">
                     <div className="template-row">
                         <div className="template-count-box">
@@ -36,13 +81,37 @@ const Template = (props: Props) => {
                 </div>
                 <div className="col-md-6">
                     <div className="row justify-content-end" style={{ marginRight: '20px' }}>
-                        <button type="button" className="btn btn-warning create-btn">+ Create Template</button>
+                        <button onClick={handleClickOpen} type="button" className="btn btn-warning create-btn">Request a Template</button>
                     </div>
                 </div>
             </div>
         </>
         );
     }
+
+    const handleOnChangeFileUpload = (post: any) => {
+        let files_: File[] = [];
+        const files = post.target.files;
+        if (files && files.length > 0) {
+            for (let i = 0; i < files.length; i++) {
+                let file = post.target.files[i];
+                let reader = new FileReader();
+                if (file) {
+                    reader.readAsDataURL(file);
+                    reader.onload = () => {
+                        files_.push({
+                            name: file.name,
+                            size: file.size,
+                            type: file.type,
+                        });
+                    };
+                }
+            }
+        }
+        setShowTemplateForm(true);
+        setUploadedFiles(files);
+        setTemplateName(files[0].name);
+    };
     return (
         <div className="row">
             <div className="col-md-1" style={{ zIndex: 2 }}>
@@ -50,7 +119,7 @@ const Template = (props: Props) => {
             </div>
             <div className="col-md-11 mt-6">
                 {generateTopHeader()}
-                <p className="mt-3">Recent</p>
+                {/* <p className="mt-3">Recent</p>
                 <div className="row mb-3">
                     {recentTemplate.map((template) => (
                         <div className="col-md-2">
@@ -67,9 +136,93 @@ const Template = (props: Props) => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
                 {ListView()}
             </div>
+            <Dialog fullWidth={true} open={open} onClose={handleClose} aria-labelledby="customized-dialog-title">
+                <DialogTitle id="customized-dialog-title">Request Form</DialogTitle>
+                <DialogContent dividers>
+                    <div className="row mb-5">
+                        <div className="col-md-8">
+                            <FormControl variant="outlined" className="formControl" fullWidth={true}>
+                                <InputLabel id="demo-simple-select-outlined-label">Please create a template from</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-outlined-label"
+                                    id="demo-simple-select-outlined"
+                                    value={selectTemplate}
+                                    onChange={handleSelectTemplateFrom}
+                                    fullWidth={true}
+                                    label="Please create a template from"
+                                >
+                                    <MenuItem value={'upload'}>Upload new template</MenuItem>
+                                    <MenuItem value={'select'}>Select from Contract</MenuItem>
+                                    <MenuItem value={'request'}>Request a template from riverus</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div className="col-md-4 align-self-center">
+                            {selectTemplate == 'upload' && <button onClick={handleUpload} type="button" className="btn btn-warning create-btn">Upload</button>}
+                        </div>
+                        <form encType="multipart/form-data">
+                            <input
+                                ref={fileInput}
+                                style={{ visibility: "hidden", height: 0 }}
+                                name="file"
+                                id="file-input"
+                                type="file"
+                                accept=".pdf,.doc,.docx,.txt"
+                                onChange={handleOnChangeFileUpload}
+                            />
+                        </form>
+                    </div>
+                    {showTemplateForm && <div className="row">
+                        <div className="col-md-6">
+                            <form className="formControl" noValidate>
+                                <TextField onChange={handleTemplateName} fullWidth={true} id="outlined-basic" label="Template Name" value={templateName} variant="outlined" />
+                            </form>
+                        </div>
+                        <div className="col-md-6">
+                            <FormControl fullWidth={true} variant="outlined" className="formControl">
+                                <InputLabel id="demo-simple-select-outlined-label">Template Type</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-outlined-label"
+                                    id="demo-simple-select-outlined"
+                                    value={templateType}
+                                    onChange={handleTemplateType}
+                                    label="Template Type"
+                                >
+                                    <MenuItem value={'nda'}>NDA</MenuItem>
+                                    <MenuItem value={'license'}>License Agreement</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </div>}
+                    {selectTemplate == 'select' && <div className="row">
+                        <div className="col-md-8">
+                            <FormControl variant="outlined" className="formControl" fullWidth={true}>
+                                <InputLabel id="demo-simple-select-outlined-label">Select from List of Contract</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-outlined-label"
+                                    id="demo-simple-select-outlined"
+                                    fullWidth={true}
+                                    label="Select from List of Contract"
+                                >
+                                    <MenuItem value={'1'}>Contract 1</MenuItem>
+                                    <MenuItem value={'2'}>Contract 2</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </div>}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 };
