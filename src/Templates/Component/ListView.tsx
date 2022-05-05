@@ -5,7 +5,10 @@ import { TemplateData } from '../State/templateState';
 import ListViewHeader from './listViewHeader';
 import ListViewTable from './ListViewTable';
 
-const ListView = () => {
+interface Props {
+    templateData: TemplateData[]
+}
+const ListView = (props: Props) => {
 
     const [loader, setLoader] = useState(false);
     const setSortAndOrder = () => { };
@@ -15,7 +18,7 @@ const ListView = () => {
             templateType: 'NDA',
             owner: ['Abhijit'],
             createdOn: '26 Jan 2021',
-            lastUsed: '2 days ago'
+            lastUsed: ''
         };
         return [template]
     };
@@ -31,7 +34,7 @@ const ListView = () => {
                     <div className="row mr-2" style={{ marginBottom: '200px' }}>
                         {loader === true ? <BarLoader />
                             :
-                            <ListViewTable templatesData={getAllTemplatesData()}
+                            <ListViewTable templatesData={props.templateData}
                             />
                         }
                     </div>

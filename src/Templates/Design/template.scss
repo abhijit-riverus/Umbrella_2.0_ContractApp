@@ -29,13 +29,12 @@
     margin-bottom: 0;
 }
 
-.template-list-view-table {
-    padding: 5px 0px;
-    margin-right: 10px;
+.template-list-view-table div {
+    margin-top: 3px;
 }
 
-.template-list-view-table div {
-    padding-left: 2rem;
+.pl-2 {
+    padding-left: 2rem !important;
 }
 
 .create-btn {

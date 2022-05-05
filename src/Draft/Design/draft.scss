@@ -16,8 +16,34 @@
     padding: 10px;
     font-size: 10px;
     color: #8C8C8C;
-    width: 200px;
+    width: 400px;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.MuiAppBar-root {
+    border-bottom: 1px solid #E1E1E1 !important;
+}
+
+.MuiPaper-elevation4 {
+    box-shadow: none !important;
+}
+
+.MuiTab-root {
+    font-size: 1rem !important;
+    text-transform: none !important;
+}
+
+.MuiAppBar-colorPrimary {
+    color: #88305F !important;
+    background-color: #ffffff !important;
+}
+
+.MuiTabs-indicator {
+    background-color: #88305F !important;
+}
+
+.MuiTabs-indicator {
+    height: 3px !important;
 }
 
 .draft-count {
@@ -27,6 +53,11 @@
 
 .margin-0 {
     margin-bottom: 0;
+}
+
+.list-view-header div {
+    padding: 9px;
+    height: 40px;
 }
 
 .draft-list-view-table {
@@ -57,6 +88,23 @@
 
 .draft-icon {
     width: 31px;
+}
+
+.cancel-btn {
+    font-size: 14px !important;
+    color: #88305F !important;
+    font-weight: 700 !important;
+}
+
+.save-btn {
+    font-size: 15 !important;
+    font-weight: 700 !important;
+}
+
+.delete-icon {
+    width: 20px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 @mixin avatar($size) {

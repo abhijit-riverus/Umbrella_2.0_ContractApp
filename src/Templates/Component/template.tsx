@@ -4,6 +4,7 @@ import { History } from "history";
 import "../Design/template.scss";
 import ListView from "./ListView";
 import { DialogActions, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabel, Select, MenuItem, Divider, TextField } from '@material-ui/core';
+import { TemplateData } from "../State/templateState";
 
 interface Props {
     history: History;
@@ -11,9 +12,9 @@ interface Props {
 }
 
 interface File {
-    type: String;
+    type: string;
     size: number;
-    name: String;
+    name: string;
 }
 const Template = (props: Props) => {
     useEffect(() => {
@@ -28,13 +29,16 @@ const Template = (props: Props) => {
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const fileInput = useRef<any>(null);
     const [templateName, setTemplateName] = useState('');
+    const [templates, setTempates] = useState<TemplateData[]>([]);
     useEffect(() => {
         if (selectTemplate !== 'upload') {
             setShowTemplateForm(false);
         }
     }, [selectTemplate])
 
+    useEffect(() => {
 
+    }, [templates]);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -44,6 +48,8 @@ const Template = (props: Props) => {
     };
 
     const handleClose = () => {
+        setUploadedFiles([]);
+        setSelectTemplate('');
         setOpen(false);
     };
 
@@ -57,6 +63,16 @@ const Template = (props: Props) => {
 
     const handleTemplateName = (event: any) => {
         setTemplateName(event.target.value);
+    }
+
+    const handleSubmit = () => {
+        if (selectTemplate == 'upload') {
+            let template: TemplateData = { templateType: templateType, name: uploadedFiles[0].name, lastUsed: '', createdOn: new Date().toDateString(), owner: ['Abhijit Barick'] };
+            setTempates([...templates, template]);
+        }
+        setUploadedFiles([]);
+        setSelectTemplate('');
+        setOpen(false);
     }
     const generateTopHeader = () => {
         return (<>
@@ -108,7 +124,7 @@ const Template = (props: Props) => {
             }
         }
         setShowTemplateForm(true);
-        setUploadedFiles(files);
+        setUploadedFiles(files_);
         setTemplateName(files[0].name);
     };
     return (
@@ -136,12 +152,17 @@ const Template = (props: Props) => {
                         </div>
                     ))}
                 </div> */}
-                {ListView()}
+                <ListView templateData={templates} />
             </div>
             <Dialog fullWidth={true} open={open} onClose={handleClose} aria-labelledby="customized-dialog-title">
-                <DialogTitle id="customized-dialog-title">Request Form</DialogTitle>
+                <DialogTitle id="customized-dialog-title">
+                    <div className="row">
+                        <div className="col-md-11">Request Form</div>
+                        <div onClick={handleClose} className="col-md-1"><img src="/static_images/close-modal-icn.svg" alt="close_icon" /></div>
+                    </div>
+                </DialogTitle>
                 <DialogContent dividers>
-                    <div className="row mb-5">
+                    <div className="row mb-3">
                         <div className="col-md-8">
                             <FormControl variant="outlined" className="formControl" fullWidth={true}>
                                 <InputLabel id="demo-simple-select-outlined-label">Please create a template from</InputLabel>
@@ -214,12 +235,13 @@ const Template = (props: Props) => {
                     </div>}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button className="cancel-btn" onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <button onClick={handleSubmit} type="button" className="btn btn-warning create-btn save-btn">
                         Submit
-                    </Button>
+                    </button>
+
                 </DialogActions>
             </Dialog>
         </div>
