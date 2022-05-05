@@ -116,7 +116,7 @@ export function capitalizeFirstLetter(name: string) {
         return "Clause Library"
     } else if (name === "dataDictionary") {
         return "Data Dictionary"
-    } else if (name === "draftingReview") {
+    } else if (name === "draftingreview") {
         return "Drafting & Review"
     } else {
         return name.charAt(0).toUpperCase() + name.slice(1);

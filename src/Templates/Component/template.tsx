@@ -16,7 +16,6 @@ interface File {
     name: String;
 }
 const Template = (props: Props) => {
-    console.log('template component');
     useEffect(() => {
         props.pageWatcher("templates");
     }, [])
