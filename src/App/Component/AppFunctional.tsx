@@ -149,7 +149,7 @@ const App = (props: Props) => {
 							<SessionExpiry />
 						)}
 					{logoutLoader && !refreshPage && <LogoutModal />}
-					<div className="container-fluid">
+					{/* <div className="container-fluid">
 						{isLoggedIn && (
 							<PrivateRoute
 								handleKeycloakRealmNameChange={
@@ -172,7 +172,7 @@ const App = (props: Props) => {
 								</Router>
 							</PrivateRoute>
 						)}
-					</div>
+					</div> */}
 					<Router history={history}>
 						<Switch>
 							{FREEROUTES.map((route, i) => (

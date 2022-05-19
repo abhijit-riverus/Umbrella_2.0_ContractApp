@@ -131,6 +131,16 @@ export const FREEROUTES: RouteInterface[] = [
 		component: signInCon,
 		exact: true,
 	},
+	{
+		path: "/templates",
+		component: TemplateCon,
+		exact: true
+	},
+	{
+		path: "/draftingreview",
+		component: DraftContainer,
+		exact: true
+	}
 ];
 
 export const STYLUSROUTES: RouteInterface[] = [

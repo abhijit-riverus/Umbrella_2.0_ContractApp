@@ -8,6 +8,7 @@ interface Props {
     pageType: string;
     history: History;
     platform: string;
+    gotoStyllus: () => void;
 }
 
 interface IconState {
@@ -106,6 +107,11 @@ export class SideNavbar extends Component<Props, State> {
                 }
             ],
         };
+    }
+    componentDidMount() {
+        if (window.location.href.includes('templates') || window.location.href.includes('draftingreview')) {
+            this.props.gotoStyllus();
+        }
     }
     render() {
         let { iconsList, styllusIconsList } = this.state;

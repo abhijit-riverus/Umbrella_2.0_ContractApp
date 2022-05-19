@@ -22,6 +22,7 @@
 		"bootstrap": "^4.6.0",
 		"env-cmd": "^10.1.0",
 		"file-saver": "^2.0.5",
+		"firebase": "^9.8.1",
 		"is-what": "^4.1.7",
 		"keycloak-js": "^17.0.0",
 		"moment": "^2.29.1",
