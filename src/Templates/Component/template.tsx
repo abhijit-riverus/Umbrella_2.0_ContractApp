@@ -11,6 +11,11 @@ interface Props {
     pageWatcher: (page: string) => void;
 }
 
+const templateData: TemplateData[] = [
+    { name: 'Template 1', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString() },
+    { name: 'Template 2', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString() },
+]
+
 interface File {
     type: string;
     size: number;
@@ -19,6 +24,7 @@ interface File {
 const Template = (props: Props) => {
     useEffect(() => {
         props.pageWatcher("templates");
+        setTempates([...templateData]);
     }, [])
     const [recentTemplate, setRecentTemplate] = useState([{ name: 'Template 1' }, { name: 'Template 1' }]);
     const [open, setOpen] = useState(false);
@@ -36,9 +42,7 @@ const Template = (props: Props) => {
         }
     }, [selectTemplate])
 
-    useEffect(() => {
 
-    }, [templates]);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -211,7 +215,7 @@ const Template = (props: Props) => {
                                     onChange={handleTemplateType}
                                     label="Template Type"
                                 >
-                                    <MenuItem value={'nda'}>NDA</MenuItem>
+                                    <MenuItem value={'NDA'}>NDA</MenuItem>
                                     <MenuItem value={'license'}>License Agreement</MenuItem>
                                 </Select>
                             </FormControl>
