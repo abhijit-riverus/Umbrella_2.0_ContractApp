@@ -12,8 +12,8 @@ interface Props {
 }
 
 const templateData: TemplateData[] = [
-    { name: 'Template 1', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString() },
-    { name: 'Template 2', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString() },
+    { name: 'NDA_Template.pdf', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString(), templateLink: "../../Assets/NDA_Template.docx" },
+    { name: 'NDA_Template_2', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString(), templateLink: "../../Assets/NDA_Template.docx" },
 ]
 
 interface File {
@@ -71,7 +71,7 @@ const Template = (props: Props) => {
 
     const handleSubmit = () => {
         if (selectTemplate == 'upload') {
-            let template: TemplateData = { templateType: templateType, name: uploadedFiles[0].name, lastUsed: '', createdOn: new Date().toDateString(), owner: ['Abhijit Barick'] };
+            let template: TemplateData = { templateType: templateType, name: uploadedFiles[0].name, lastUsed: '', createdOn: new Date().toDateString(), owner: ['Abhijit Barick'], templateLink: "../../Assets/NDA_Template.docx" };
             setTempates([...templates, template]);
         }
         setUploadedFiles([]);
@@ -85,15 +85,15 @@ const Template = (props: Props) => {
                 <div className="col-md-6">
                     <div className="template-row">
                         <div className="template-count-box">
-                            <p className="template-count">72</p>
+                            <p className="template-count">2</p>
                             <p className="margin-0">TOTAL TEMPLATES</p>
                         </div>
                         <div className="template-count-box">
-                            <p className="template-count">72</p>
+                            <p className="template-count">0</p>
                             <p className="margin-0">SYSTEM TEMPLATES</p>
                         </div>
                         <div className="template-count-box">
-                            <p className="template-count">72</p>
+                            <p className="template-count">2</p>
                             <p className="margin-0">MY TEMPLATES</p>
                         </div>
                     </div>

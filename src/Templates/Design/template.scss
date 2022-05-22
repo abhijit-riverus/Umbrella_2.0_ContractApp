@@ -102,3 +102,7 @@
 .avatar-circle-lg {
     @include avatar(250px);
 }
+
+#react-doc-viewer #header-bar {
+    display: none !important;
+}

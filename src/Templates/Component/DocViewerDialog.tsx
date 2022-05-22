@@ -5,6 +5,8 @@ import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 interface Props {
     open: boolean;
     onClose: () => void;
+    templateLink: string;
+    fileName: string;
 }
 const DocViewerDialog = (props: Props) => {
 
@@ -12,12 +14,13 @@ const DocViewerDialog = (props: Props) => {
     const [documents, setDocuments] = useState<any[]>([]);
 
     useEffect(() => {
+        setDocuments([{ uri: require('../../Assets/NDA_Template.pdf') }])
+    }, [props.templateLink])
+
+    useEffect(() => {
         setOpen(props.open)
     }, [props.open]);
 
-    useEffect(() => {
-        setDocuments([{ uri: require('../../Assets/NDA_Template.docx') }])
-    }, [])
 
 
     const handleClose = () => {
@@ -33,7 +36,15 @@ const DocViewerDialog = (props: Props) => {
                 </div>
             </DialogTitle>
             <DialogContent dividers>
-                <DocViewer documents={documents} pluginRenderers={DocViewerRenderers} />
+                <div>
+                    <p>{props.fileName}</p>
+                </div>
+                <DocViewer config={{
+                    header: {
+                        disableFileName: true,
+                        retainURLParams: false
+                    }
+                }} documents={documents} pluginRenderers={DocViewerRenderers} />
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>

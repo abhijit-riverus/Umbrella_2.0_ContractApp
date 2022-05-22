@@ -11,6 +11,8 @@ const ListViewTable = (props: Props) => {
 
     const [templates, setTempates] = useState<TemplateData[]>([]);
     const [open, setOpen] = useState(false);
+    const [templateLink, setTemplateLink] = useState("");
+    const [fileName, setFileName] = useState("");
     useEffect(() => {
         setTempates(props.templatesData);
     }, [props.templatesData]);
@@ -25,8 +27,10 @@ const ListViewTable = (props: Props) => {
         return stringArr[0][0].toUpperCase() + stringArr[1][0].toUpperCase()
     }
 
-    const openDocViewer = () => {
-        setOpen(true)
+    const openDocViewer = (template: TemplateData) => {
+        setOpen(true);
+        setTemplateLink(template.templateLink);
+        setFileName(template.name);
     };
 
     const handleClose = () => {
@@ -35,7 +39,7 @@ const ListViewTable = (props: Props) => {
     return (
         <>
             {templates.map((template: TemplateData, key: number) =>
-                <div onClick={openDocViewer} key={key} className="col-md-12 template-list-view" style={{ borderBottom: '1px solid #E1E1E1', marginLeft: '0.8rem', height: '45px', backgroundColor: 'white' }}>
+                <div onClick={() => openDocViewer(template)} key={key} className="col-md-12 template-list-view" style={{ borderBottom: '1px solid #E1E1E1', marginLeft: '0.8rem', height: '45px', backgroundColor: 'white' }}>
                     <div className="row template-list-view-table">
                         <div className="col-md-3">
                             <div>
@@ -81,7 +85,7 @@ const ListViewTable = (props: Props) => {
                     </div>
                 </div>
             )}
-            <DocViewerDialog open={open} onClose={handleClose} />
+            {open && <DocViewerDialog open={open} onClose={handleClose} fileName={fileName} templateLink={'../../Assets/NDA_Template.docx'} />}
         </>
     )
 }

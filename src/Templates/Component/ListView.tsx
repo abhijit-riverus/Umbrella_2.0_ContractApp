@@ -18,7 +18,8 @@ const ListView = (props: Props) => {
             templateType: 'NDA',
             owner: ['Abhijit'],
             createdOn: '26 Jan 2021',
-            lastUsed: ''
+            lastUsed: '',
+            templateLink: "../../Assets/NDA_Template.docx"
         };
         return [template]
     };
