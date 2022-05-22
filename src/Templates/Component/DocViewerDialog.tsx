@@ -5,7 +5,7 @@ import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 interface Props {
     open: boolean;
     onClose: () => void;
-    templateLink: string;
+    templateLink: any;
     fileName: string;
 }
 const DocViewerDialog = (props: Props) => {
@@ -14,8 +14,12 @@ const DocViewerDialog = (props: Props) => {
     const [documents, setDocuments] = useState<any[]>([]);
 
     useEffect(() => {
-        setDocuments([{ uri: require('../../Assets/NDA_Template.pdf') }])
-    }, [props.templateLink])
+        if (props.fileName.includes('Template')) {
+            setDocuments([{ uri: require('../../Assets/NDA_Template.pdf') }]);
+        } else {
+            setDocuments([{ uri: require('../../Assets/Consultancy_agreement_template.pdf') }]);
+        }
+    }, [props.templateLink, props.fileName])
 
     useEffect(() => {
         setOpen(props.open)
