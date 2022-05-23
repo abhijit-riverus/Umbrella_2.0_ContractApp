@@ -121,9 +121,17 @@ const DocViewerDialog = (props: Props) => {
                                         <label>Start Date</label>
                                         <input type="date" className="form-control" name="date" id="date" />
                                     </div>
-                                    <div className="form-group">
-                                        <label>Duration</label>
-                                        <input type="date" className="form-control" name="date" id="date" />
+                                    <label htmlFor="">Duration</label>
+                                    <div className="input-group">
+                                        <input type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <div className="input-group-append">
+                                            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <div className="dropdown-menu">
+                                                <a className="dropdown-item" href="#">Month</a>
+                                                <a className="dropdown-item" href="#">Year</a>
+                                                <a className="dropdown-item" href="#">Day(s)</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
