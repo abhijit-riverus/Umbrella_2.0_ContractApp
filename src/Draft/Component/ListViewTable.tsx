@@ -108,7 +108,7 @@ const ListViewTable = (props: Props) => {
                     </div>
                 </div>
             )}
-            {open && <DocViewerDialog fileName={fileName} open={open} onClose={handleClose} templateLink={'../../Assets/NDA_Template.docx'} />}
+            {open && <DocViewerDialog type='draft' fileName={fileName} open={open} onClose={handleClose} templateLink={'../../Assets/NDA_Template.docx'} />}
         </>
     )
 }
