@@ -27,10 +27,10 @@ import clauseLibraryWatcher from './ClauseLibrary/Saga/clauseLibrarySaga';
 import notificationWatcher from './UniversalComponents/Notification/Saga/notificationSaga';
 import newAnalysisWatcher from './NewAnalysis/Saga/newAnalysisSaga';
 import newDashboardWatcher from './NewDashboard/Saga/newDashboardSaga';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 const sagaMiddleWare = createSagaMiddleware();
-export const store = createStore(mainReducer, applyMiddleware(sagaMiddleWare, logger));
+export const store = createStore(mainReducer, applyMiddleware(sagaMiddleWare));
 
 sagaMiddleWare.run(heimdallWatcher);
 sagaMiddleWare.run(uploadWatcher);
