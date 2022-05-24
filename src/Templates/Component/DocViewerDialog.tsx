@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, TextField } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react'
 import "../Design/template.scss"
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
@@ -20,7 +20,14 @@ const DocViewerDialog = (props: Props) => {
     const party1address = useRef<HTMLInputElement>(null);
     const party2address = useRef<HTMLInputElement>(null);
     const date = useRef<HTMLInputElement>(null);
-    const duration = useRef<HTMLInputElement>(null);
+    const durationNum = useRef<HTMLInputElement>(null);
+    const [durationLength, setDurationLength] = useState('');
+    const confidentDurationNum = useRef<HTMLInputElement>(null);
+    const [confidentDurationLength, setconfidentDurationLength] = useState('');
+    const solicitDurationNum = useRef<HTMLInputElement>(null);
+    const [solicitDurationLength, setsolicitDurationLength] = useState('');
+    const country1 = useRef<HTMLInputElement>(null);
+    const country2 = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (props.fileName.includes('Template')) {
@@ -48,10 +55,27 @@ const DocViewerDialog = (props: Props) => {
             party1address: party1address.current?.value,
             party2: party2.current?.value,
             party2address: party2address.current?.value,
-            startdate: date.current?.value
+            contractstartdate: date.current?.value,
+            contractduration: durationNum.current?.value + ' ' + durationLength,
+            confidentialityduration: confidentDurationNum.current?.value + ' ' + confidentDurationLength,
+            nonsolicitationduration: solicitDurationNum.current?.value + ' ' + solicitDurationLength,
+            incorporationcountry1: country1.current?.value,
+            incorporationcountry2: country2.current?.value
         };
         console.log(json);
         generateDocument(json, require("../../Assets/NDA_Template.docx"), props.fileName.split(".")[0]);
+    }
+
+    const setDuration = (event: any) => {
+        setDurationLength(event.target.value);
+    }
+
+    const setConfidentDuration = (event: any) => {
+        setconfidentDurationLength(event.target.value);
+    }
+
+    const setsolicitDuration = (event: any) => {
+        setsolicitDurationLength(event.target.value);
     }
 
     return (
@@ -74,10 +98,10 @@ const DocViewerDialog = (props: Props) => {
                             </div>
                             <div className="card-body">
                                 {props.type == 'template' && <form>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label>Title</label>
                                         <input ref={title} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <label>Contracting Party 1</label>
                                         <input ref={party1} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -93,6 +117,14 @@ const DocViewerDialog = (props: Props) => {
                                     <div className="form-group">
                                         <label>Contracting Party 2 Address</label>
                                         <input ref={party2address} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Incorporation Country 1</label>
+                                        <input ref={country1} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Incorporation Country 2</label>
+                                        <input ref={country2} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                 </form>}
                                 {
@@ -133,7 +165,7 @@ const DocViewerDialog = (props: Props) => {
                                 }
                             </div>
                         </div>
-                        {props.type == 'template' && <div className="card">
+                        {props.type == 'template' && <div className="card mb-3">
                             <div className="card-header">
                                 <h5>Term</h5>
                             </div>
@@ -143,16 +175,73 @@ const DocViewerDialog = (props: Props) => {
                                         <label>Start Date</label>
                                         <input ref={date} type="date" className="form-control" name="date" id="date" />
                                     </div>
-                                    <label htmlFor="">Duration</label>
+                                    <label htmlFor="">Contract Duration</label>
+                                    <div className="input-group">
+                                        <input ref={durationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <div className="input-group-append">
+                                            <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={durationLength}
+                                                    label="Duration"
+                                                    onChange={setDuration}
+                                                >
+                                                    <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                    <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                    <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </div>
+                                    </div>
+                                    <label htmlFor="">Confidentiality Duration</label>
                                     <div className="input-group">
                                         <input type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                         <div className="input-group-append">
-                                            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                            <div className="dropdown-menu">
-                                                <a className="dropdown-item" href="#">Month</a>
-                                                <a className="dropdown-item" href="#">Year</a>
-                                                <a className="dropdown-item" href="#">Day(s)</a>
-                                            </div>
+                                            <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={confidentDurationLength}
+                                                    label="Duration"
+                                                    onChange={setConfidentDuration}
+                                                >
+                                                    <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                    <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                    <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>}
+                        {props.type == 'template' && <div className="card">
+                            <div className="card-header">
+                                <h5>Non Solicitation Clause</h5>
+                            </div>
+                            <div className="card-body">
+                                <form>
+                                    <label htmlFor="">Duration</label>
+                                    <div className="input-group">
+                                        <input ref={solicitDurationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <div className="input-group-append">
+                                            <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={solicitDurationLength}
+                                                    label="Duration"
+                                                    onChange={setsolicitDuration}
+                                                >
+                                                    <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                    <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                    <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                         </div>
                                     </div>
                                 </form>

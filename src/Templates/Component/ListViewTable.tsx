@@ -4,6 +4,7 @@ import { getDueDateFormat } from '../../Utils/DataModifierUtil/dataModUtil';
 import { TemplateData } from '../State/templateState';
 import "../Design/template.scss";
 import DocViewerDialog from './DocViewerDialog';
+import { Tooltip } from '@material-ui/core';
 interface Props {
     templatesData: TemplateData[]
 }
@@ -42,12 +43,14 @@ const ListViewTable = (props: Props) => {
                 <div onClick={() => openDocViewer(template)} key={key} className="col-md-12 template-list-view" style={{ borderBottom: '1px solid #E1E1E1', marginLeft: '0.8rem', height: '45px', backgroundColor: 'white' }}>
                     <div className="row template-list-view-table">
                         <div className="col-md-3">
-                            <div>
-                                {
-                                    (template.name === null || template.name === '') && <img src="/static_images/empty-dash.svg"></img>
-                                }
-                                {template.name !== null && template.name}
-                            </div>
+                            <Tooltip title={template.name} arrow>
+                                <div className='text-overflow'>
+                                    {
+                                        (template.name === null || template.name === '') && <img src="/static_images/empty-dash.svg"></img>
+                                    }
+                                    {template.name !== null && template.name}
+                                </div>
+                            </Tooltip>
                         </div>
                         <div className="col-md-3">
                             <div>

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const templateData: TemplateData[] = [
-    { name: 'NDA_Template.docx', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString(), templateLink: "../../Assets/NDA_Template.docx" },
+    { name: 'NDA Template (Mutual -Company Counterparty).docx', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString(), templateLink: "../../Assets/NDA_Template.docx" },
     { name: 'NDA_Template_2.docx', templateType: 'NDA', owner: ['Abhijit Barick'], lastUsed: '', createdOn: new Date().toDateString(), templateLink: "../../Assets/NDA_Template.docx" },
 ]
 
