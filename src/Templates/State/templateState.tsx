@@ -4,6 +4,4 @@ export interface TemplateData {
     owner: any[];
     createdOn: string;
     lastUsed: string;
-    status: string;
-    format: string;
 }

@@ -1,3 +1,4 @@
+import { UMBRELLA } from '../Actions/definitions';
 import HeimdallUtil from '../HeimdallUtil/heimdallUtil';
 
 export default interface HeimdallState {
@@ -16,6 +17,7 @@ export default interface HeimdallState {
     occurence: number;
     componentClaims: string[];
     attachPass: boolean;
+    platform: string;
 }
 
 export function getDefaultHeimdallState(): HeimdallState {
@@ -34,6 +36,7 @@ export function getDefaultHeimdallState(): HeimdallState {
         systemInternetState: true,
         occurence: -1,
         componentClaims: HeimdallUtil.getComponentClaims(),
-        attachPass: false
+        attachPass: false,
+        platform: UMBRELLA
     };
 }

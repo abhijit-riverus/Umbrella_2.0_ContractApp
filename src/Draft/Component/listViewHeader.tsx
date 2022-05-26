@@ -119,24 +119,35 @@ export default class ListViewHeader extends Component<Props, State> {
             <>
                 <div className="col-md-12 p-0">
                     <div className="row list-view-header">
-                        <div className="col-md-3" onClick={() => this.setState({ sort: 'title', titleOrder: !titleOrder, fileNameOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('title') })} >
-                            Name
-                        </div>
-                        <div className="col-md-3" onClick={() => this.setState({ sort: 'file_name', fileNameOrder: !fileNameOrder, titleOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, clauseNameOrder: true }, () => { this.setSortingAndOrder('file_name') })}>
-                            Template Type
+                        <div className="col-md-1" >
+                            Project Name
                         </div>
                         <div className="col-md-2"
-                            onClick={() => this.setState({ sort: 'clause_name', clauseNameOrder: !clauseNameOrder, titleOrder: true, dueOrder: true, progressNameOrder: true, stateNameOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('clause_name') })}
+                        >
+                            Contract Name
+                        </div>
+                        <div className="col-md-2"
+                        >
+                            Contract Type
+                        </div>
+                        <div className="col-md-2">
+                            Counter-party Name
+                        </div>
+                        <div className="col-md-1"
                         >
                             Owner
                         </div>
-                        <div className="col-md-2">
-                            Created On
+                        <div className="col-md-1"
+                        >
+                            Created on
                         </div>
                         <div className="col-md-2"
-                            onClick={() => this.setState({ sort: 'due', dueOrder: !dueOrder, titleOrder: true, clauseNameOrder: true, progressNameOrder: true, stateNameOrder: true, fileNameOrder: true }, () => { this.setSortingAndOrder('due') })}
                         >
-                            Last Used
+                            Current Status
+                        </div>
+                        <div className="col-md-1"
+                        >
+                            Deadline
                         </div>
                     </div>
                 </div>
