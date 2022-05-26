@@ -63,12 +63,12 @@ const DocViewerDialog = (props: Props) => {
     const handleError = () => {
         let party = party1.current!.value;
         let partyAdd = party1address.current!.value
-        if (party.length > 10) {
+        if (party.length > 100) {
             setInvalidParty(true);
         } else {
             setInvalidParty(false);
         }
-        if (partyAdd.length > 20) {
+        if (partyAdd.length > 200) {
             setInvalidPartyAdd(true);
         } else {
             setInvalidPartyAdd(false);
@@ -91,7 +91,7 @@ const DocViewerDialog = (props: Props) => {
             nonsolicitationduration: solicitDurationNum.current?.value + ' ' + solicitDurationLength,
             incorporationcountry1: country1.current?.value,
             incorporationcountry2: country2.current?.value,
-            discnotcduration: discnotduration.current?.value + ' ' + discnotdurationLength,
+            discnotcduration: discnotduration.current?.value,
             jurisdiction: jurisdiction.current?.value,
             signatory1name: signatory1name.current?.value,
             signatory1designation: signatory1designation.current?.value,
@@ -131,47 +131,56 @@ const DocViewerDialog = (props: Props) => {
                 </div>
             </DialogTitle>
             <DialogContent dividers>
-                <div>
-                    <p>{props.fileName}</p>
-                </div>
                 <div className="row">
                     <div className="col-md-6">
-                        {props.type == 'template' && <form>
-                            {/* <div className="form-group">
+                        <div>
+                            <p>{props.fileName}</p>
+                        </div>
+                        {props.type == 'template' &&
+                            <div className="card mb-3">
+                                <div className="card-header">
+                                    Basic Information
+                                </div>
+                                <div className="card-body">
+                                    <form>
+                                        {/* <div className="form-group">
                                         <label>Title</label>
                                         <input ref={title} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div> */}
-                            <div className="form-group">
-                                <label>Please enter the name of the first party to the contract</label>
-                                <input onChange={handleError} ref={party1} type="string" className={`form-control ${isInvalidParty ? 'is-invalid' : ''}`} id="exampleInputEmail1" aria-describedby="emailHelp" required />
-                                {isInvalidParty && <div id="validationServer03Feedback" className="invalid-feedback">
-                                    Text should not be greater than 10 chars.
-                                </div>}
+                                        <div className="form-group">
+                                            <label>Enter the name of the first party to the contract</label>
+                                            <input onChange={handleError} ref={party1} type="string" className={`form-control ${isInvalidParty ? 'is-invalid' : ''}`} id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                                            {isInvalidParty && <div id="validationServer03Feedback" className="invalid-feedback">
+                                                Text should not be greater than 100 chars.
+                                            </div>}
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Enter the address of Party 1</label>
+                                            <input onChange={handleError} ref={party1address} type="text" className={`form-control ${isInvalidPartyAdd ? 'is-invalid' : ''}`} id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            {isInvalidPartyAdd && <div id="validationServer03Feedback" className="invalid-feedback">
+                                                Text should not be greater than 200 chars.
+                                            </div>}
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Enter the name of the second party to the contract</label>
+                                            <input ref={party2} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Enter the address of Party 2</label>
+                                            <input ref={party2address} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Enter the country in which the first party is incorporated</label>
+                                            <input ref={country1} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Enter the country in which the second party is incorporated</label>
+                                            <input ref={country2} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div className="form-group">
-                                <label>Please enter the address of Party 1</label>
-                                <input onChange={handleError} ref={party1address} type="text" className={`form-control ${isInvalidPartyAdd ? 'is-invalid' : ''}`} id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                {isInvalidPartyAdd && <div id="validationServer03Feedback" className="invalid-feedback">
-                                    Text should not be greater than 20 chars.
-                                </div>}
-                            </div>
-                            <div className="form-group">
-                                <label>Please enter the name of the second party to the contract</label>
-                                <input ref={party2} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            </div>
-                            <div className="form-group">
-                                <label>Please enter the address of Party 2</label>
-                                <input ref={party2address} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            </div>
-                            <div className="form-group">
-                                <label>Please enter the country in which the first party is incorporated</label>
-                                <input ref={country1} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            </div>
-                            <div className="form-group">
-                                <label>Please enter the country in which the second party is incorporated</label>
-                                <input ref={country2} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            </div>
-                        </form>}
+                        }
                         {
                             props.type == 'draft' && <form>
                                 <div className="form-group">
@@ -209,116 +218,141 @@ const DocViewerDialog = (props: Props) => {
                             </form>
                         }
                         {props.type == 'template' &&
-                            <form>
-                                <div className="form-group">
-                                    <label>Please enter the date of commencement of the obligations of the parties to the contract</label>
-                                    <input ref={date} type="date" className="form-control" name="date" id="date" />
+                            <div className="card mb-3">
+                                <div className="card-header">
+                                    Term
                                 </div>
-                                <label htmlFor="">Please enter the duration for which the contract is valid</label>
-                                <div className="input-group mb-3">
-                                    <input ref={durationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    <div className="input-group-append">
-                                        <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
-                                            <InputLabel id="demo-simple-select-label">Duration</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={durationLength}
-                                                label="Duration"
-                                                onChange={setDuration}
-                                            >
-                                                <MenuItem value={'Month(s)'}>Month</MenuItem>
-                                                <MenuItem value={'Year(s)'}>Year</MenuItem>
-                                                <MenuItem value={'Days'}>Day(s)</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </div>
+                                <div className="card-body">
+                                    <form>
+                                        <div className="form-group">
+                                            <label>Enter the date of commencement of the obligations of the parties to the contract</label>
+                                            <input ref={date} type="date" className="form-control" name="date" id="date" />
+                                        </div>
+                                        <label htmlFor="">Enter the duration for which the contract is valid</label>
+                                        <div className="input-group mb-3">
+                                            <input ref={durationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <div className="input-group-append">
+                                                <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                    <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        value={durationLength}
+                                                        label="Duration"
+                                                        onChange={setDuration}
+                                                    >
+                                                        <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                        <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                        <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </div>
+                                        </div>
+                                        <label htmlFor="">Enter duration of the period upto which confidentiality is required to be maintained</label>
+                                        <div className="input-group mb-3">
+                                            <input ref={confidentDurationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <div className="input-group-append">
+                                                <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                    <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        value={confidentDurationLength}
+                                                        label="Duration"
+                                                        onChange={setConfidentDuration}
+                                                    >
+                                                        <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                        <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                        <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </div>
+                                        </div>
+                                        <label htmlFor="">Enter the period for which non solicitation covenant shall remain in force</label>
+                                        <div className="input-group mb-3">
+                                            <input ref={solicitDurationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <div className="input-group-append">
+                                                <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                    <InputLabel id="demo-simple-select-label">Duration</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        value={solicitDurationLength}
+                                                        label="Duration"
+                                                        onChange={setsolicitDuration}
+                                                    >
+                                                        <MenuItem value={'Month(s)'}>Month</MenuItem>
+                                                        <MenuItem value={'Year(s)'}>Year</MenuItem>
+                                                        <MenuItem value={'Days'}>Day(s)</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </div>
+                                        </div>
+                                        <label htmlFor="">Enter the duration of advance notice to be given in case Receiving Party needs to disclose any confidential information pursuant to a court order</label>
+                                        <div className="input-group mb-3">
+                                            <input ref={discnotduration} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <div className="input-group-append">
+                                                <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
+                                                    <InputLabel id="demo-simple-select-disabled-label">Duration</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-disabled-label"
+                                                        id="demo-simple-select-disabled"
+                                                        value='hours'
+                                                        label="Duration"
+                                                        onChange={setdiscnotcduration}
+                                                    >
+                                                        <MenuItem value={'hours'}>Hours</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <label htmlFor="">Please enter duration of the period upto which confidentiality is required to be maintained</label>
-                                <div className="input-group mb-3">
-                                    <input ref={confidentDurationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    <div className="input-group-append">
-                                        <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
-                                            <InputLabel id="demo-simple-select-label">Duration</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={confidentDurationLength}
-                                                label="Duration"
-                                                onChange={setConfidentDuration}
-                                            >
-                                                <MenuItem value={'Month(s)'}>Month</MenuItem>
-                                                <MenuItem value={'Year(s)'}>Year</MenuItem>
-                                                <MenuItem value={'Days'}>Day(s)</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         }
                         {props.type == 'template' &&
-                            <form>
-                                <label htmlFor="">Please enter the period for which non solicitation covenant shall remain in force</label>
-                                <div className="input-group mb-3">
-                                    <input ref={solicitDurationNum} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    <div className="input-group-append">
-                                        <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
-                                            <InputLabel id="demo-simple-select-label">Duration</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={solicitDurationLength}
-                                                label="Duration"
-                                                onChange={setsolicitDuration}
-                                            >
-                                                <MenuItem value={'Month(s)'}>Month</MenuItem>
-                                                <MenuItem value={'Year(s)'}>Year</MenuItem>
-                                                <MenuItem value={'Days'}>Day(s)</MenuItem>
-                                            </Select>
-                                        </FormControl>
+                            <>
+                                <div className="card mb-3">
+                                    <div className="card-header">
+                                        Governing Law
+                                        &    Jurisdiction
+                                    </div>
+                                    <div className="card-body">
+                                        <form>
+                                            <div className="form-group">
+                                                <label>Enter the place whose courts or tribunals will have jurisdiction to decide any legal dispute arising out of the contract</label>
+                                                <input ref={jurisdiction} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            </div>
+
+                                        </form>
                                     </div>
                                 </div>
-                                <label htmlFor="">Please enter the duration of advance notice to be given in case Receiving Party needs to disclose any confidential information pursuant to a court order</label>
-                                <div className="input-group mb-3">
-                                    <input ref={discnotduration} type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    <div className="input-group-append">
-                                        <FormControl style={{ 'minWidth': '104px' }} variant="outlined">
-                                            <InputLabel id="demo-simple-select-label">Duration</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={discnotdurationLength}
-                                                label="Duration"
-                                                onChange={setdiscnotcduration}
-                                            >
-                                                <MenuItem value={'Month(s)'}>Month</MenuItem>
-                                                <MenuItem value={'Year(s)'}>Year</MenuItem>
-                                                <MenuItem value={'Days'}>Day(s)</MenuItem>
-                                            </Select>
-                                        </FormControl>
+                                <div className="card">
+                                    <div className="card-header">
+                                        Signatory Details
+                                    </div>
+                                    <div className="card-body">
+                                        <form>
+                                            <div className="form-group">
+                                                <label>Enter the name of the first signatory to the contract</label>
+                                                <input ref={signatory1name} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Enter the designation of the first signatory to the contract</label>
+                                                <input ref={signatory1designation} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Enter the name of the second signatory to the contract</label>
+                                                <input ref={signatory2name} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Enter the designation of the second signatory to the contract</label>
+                                                <input ref={signatory2designation} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div className="form-group">
-                                    <label>Please enter the place whose courts or tribunals will have jurisdiction to decide any legal dispute arising out of the contract</label>
-                                    <input ref={jurisdiction} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Please enter the name of the first signatory to the contract</label>
-                                    <input ref={signatory1name} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Please enter the designation of the first signatory to the contract</label>
-                                    <input ref={signatory1designation} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Please enter the name of the second signatory to the contract</label>
-                                    <input ref={signatory2name} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Please enter the designation of the second signatory to the contract</label>
-                                    <input ref={signatory2designation} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                </div>
-                            </form>
+                            </>
                         }
                         {props.type == 'draft' && <div className='card mb-3'>
                             <div className="card-header">
@@ -384,7 +418,8 @@ const DocViewerDialog = (props: Props) => {
                     <div className="col-md-6">
                         <DocViewer config={{
                             header: {
-                                disableFileName: true,
+                                disableHeader: false,
+                                disableFileName: false,
                                 retainURLParams: false
                             }
                         }} documents={documents} pluginRenderers={DocViewerRenderers} />
