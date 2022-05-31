@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { History } from 'history';
 import { capitalizeFirstLetter } from '../../../Utils/DataModifierUtil/dataModUtil';
+import { STYLLUS, UMBRELLA } from '../../HeimdallChild/Actions/definitions';
+import { platform } from 'os';
 
 interface Props {
     pageType: string;
     history: History;
+    platform: string;
 }
 
 interface IconState {
@@ -16,6 +19,7 @@ interface IconState {
 interface State {
     iconsList: IconState[];
     selectedTab: string;
+    styllusIconsList: IconState[];
 }
 
 export class SideNavbar extends Component<Props, State> {
@@ -32,11 +36,6 @@ export class SideNavbar extends Component<Props, State> {
                     icon: '/static_images/tasks-icn.svg',
                     name: 'tasks',
                     text: 'Manage your tasks here'
-                },
-                {
-                    icon: '/static_images/template_icn.svg',
-                    name: 'templates',
-                    text: 'Manage your template here'
                 },
                 {
                     icon: '/static_images/document-library-icn.svg',
@@ -73,12 +72,44 @@ export class SideNavbar extends Component<Props, State> {
                     text: 'View your reports here'
                 }
             ],
-            selectedTab: props.pageType
+            selectedTab: props.pageType,
+            styllusIconsList: [
+                {
+                    icon: '/static_images/template_icn.svg',
+                    name: 'draftingreview',
+                    text: 'Manage your drafts here'
+                },
+                {
+                    icon: '/static_images/clause-library-icn.svg',
+                    name: 'clauselibrary',
+                    text: 'Access Clause Library here'
+                },
+                {
+                    icon: '/static_images/template_icn.svg',
+                    name: 'templates',
+                    text: 'Manage your template here'
+                },
+                {
+                    icon: '/static_images/template_icn.svg',
+                    name: 'dataDictionary',
+                    text: 'Manage your template here'
+                },
+                {
+                    icon: '/static_images/template_icn.svg',
+                    name: 'Approvals',
+                    text: 'Manage your template here'
+                },
+                {
+                    icon: '/static_images/template_icn.svg',
+                    name: 'Signatures',
+                    text: 'Manage your template here'
+                }
+            ],
         };
     }
     render() {
-        let { iconsList } = this.state;
-        let { pageType } = this.props;
+        let { iconsList, styllusIconsList } = this.state;
+        let { pageType, platform } = this.props;
         switch (pageType) {
             case 'document': {
                 return (
@@ -109,11 +140,22 @@ export class SideNavbar extends Component<Props, State> {
                         <div className="col-md-1 pl-0 sidenav-layout">
                             <div className="row">
                                 <div className="col-md-12 mt-4 sidenav-theme">
-                                    {iconsList.map((icon, i) =>
+                                    {platform == UMBRELLA && iconsList.map((icon, i) =>
                                         <div className="row" key={i}>
                                             <div className="col-md-12 tooltip sidenav-title-layout cursor-pointer">
                                                 <span className="tooltiptext">{icon.text}</span>
                                                 <div className={(pageType === 'documentlibrary' || pageType === 'clauselibrary') && icon.name === pageType ? 'sidenav-title-active p-1' : icon.name === pageType ? "sidenav-title-active p-3" : (icon.name === 'documentlibrary' || icon.name === 'clauselibrary') ? "sidenav-title p-1" : "sidenav-title p-3"} onClick={() => this.selectTab(icon.name)}>
+                                                    <span><img src={icon.name === pageType ? icon.icon.replace('.svg', '-active.svg') : icon.icon} alt="navbar-img" /></span><br />
+                                                    <span className={icon.name === pageType ? 'sidenav-text-active' : 'sidenav-text'}>{capitalizeFirstLetter(icon.name)}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {platform == STYLLUS && styllusIconsList.map((icon, i) =>
+                                        <div className="row" key={i}>
+                                            <div className="col-md-12 tooltip sidenav-title-layout cursor-pointer">
+                                                <span className="tooltiptext">{icon.text}</span>
+                                                <div className={(pageType === 'documentlibrary' || pageType === 'clauselibrary') && icon.name === pageType ? 'sidenav-title-active p-1' : icon.name === pageType ? "sidenav-title-active p-3" : (icon.name === 'documentlibrary' || icon.name === 'clauselibrary') ? "sidenav-title p-1" : "sidenav-title p-3"} onClick={() => (icon.name == 'templates' || icon.name == 'draftingreview') && this.selectTab(icon.name)}>
                                                     <span><img src={icon.name === pageType ? icon.icon.replace('.svg', '-active.svg') : icon.icon} alt="navbar-img" /></span><br />
                                                     <span className={icon.name === pageType ? 'sidenav-text-active' : 'sidenav-text'}>{capitalizeFirstLetter(icon.name)}</span>
                                                 </div>

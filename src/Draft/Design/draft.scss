@@ -2,12 +2,12 @@
     margin-top: 4rem !important;
 }
 
-.template-row {
+.draft-row {
     display: flex;
     justify-content: flex-start;
 }
 
-.template-count-box {
+.draft-count-box {
     border: 1px solid #EAEAEA;
     background-color: white;
     border-radius: 5px;
@@ -16,11 +16,37 @@
     padding: 10px;
     font-size: 10px;
     color: #8C8C8C;
-    width: 200px;
+    width: 400px;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.template-count {
+.MuiAppBar-root {
+    border-bottom: 1px solid #E1E1E1 !important;
+}
+
+.MuiPaper-elevation4 {
+    box-shadow: none !important;
+}
+
+.MuiTab-root {
+    font-size: 1rem !important;
+    text-transform: none !important;
+}
+
+.MuiAppBar-colorPrimary {
+    color: #88305F !important;
+    background-color: #ffffff !important;
+}
+
+.MuiTabs-indicator {
+    background-color: #88305F !important;
+}
+
+.MuiTabs-indicator {
+    height: 3px !important;
+}
+
+.draft-count {
     font-size: 30px;
     color: #996C84;
 }
@@ -29,12 +55,18 @@
     margin-bottom: 0;
 }
 
-.template-list-view-table div {
-    margin-top: 3px;
+.list-view-header div {
+    padding: 9px;
+    height: 40px;
 }
 
-.pl-2 {
-    padding-left: 2rem !important;
+.draft-list-view-table {
+    padding: 5px 0px;
+    margin-right: 10px;
+}
+
+.draft-list-view-table div {
+    padding-left: 2rem;
 }
 
 .create-btn {
@@ -48,14 +80,31 @@
     color: #626262;
 }
 
-.template-card {
+.draft-card {
     box-shadow: 0px 2px 20px 0px #8787871A;
     background-color: white;
     border-radius: 10px;
 }
 
-.template-icon {
+.draft-icon {
     width: 31px;
+}
+
+.cancel-btn {
+    font-size: 14px !important;
+    color: #88305F !important;
+    font-weight: 700 !important;
+}
+
+.save-btn {
+    font-size: 15 !important;
+    font-weight: 700 !important;
+}
+
+.delete-icon {
+    width: 20px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 @mixin avatar($size) {

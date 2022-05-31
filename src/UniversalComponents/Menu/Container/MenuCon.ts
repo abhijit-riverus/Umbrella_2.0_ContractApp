@@ -13,13 +13,16 @@ export function mapStateToProps(appState: StoreTree, ownProps: any) {
         refreshToken: appState.heimdall.refreshToken,
         visibility: appState.searchBar.visibility,
         isLoggedIn: appState.heimdall.isLoggedIn,
-        pageType: appState.app.pageType
+        pageType: appState.app.pageType,
+        platform: appState.heimdall.platform
     }
 }
 export function mapDispatchToProps(dispatch: any, ownProps: any) {
     return {
         logout: () => dispatch(HeimdallActionGen.logout()),
-        toggleSearchBarVisibility: (visibility: boolean) => dispatch(SearchBarActionGenerator.toggleVisibility(visibility))
+        toggleSearchBarVisibility: (visibility: boolean) => dispatch(SearchBarActionGenerator.toggleVisibility(visibility)),
+        gotoUmbrella: () => dispatch(HeimdallActionGen.gotoUmbrella()),
+        gotoStyllus: () => dispatch(HeimdallActionGen.gotoStyllus())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

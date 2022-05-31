@@ -1,4 +1,4 @@
-import { REVIVETOKEN, ReviveToken, ReviveTokenSuccess, REVIVETOKEN_SUCCESS, ReviveTokenFailure, REVIVETOKEN_FAILURE, Logout, LOGOUT, LOGOUT_SUCCESS, LogoutSuccess, RefreshPage, PAGE_REFRESH, Offline, OFFLINE, Online, ONLINE, PollStatusAPI, POLLSTATUSAPI, ActivatePass, ACTIVATEPASS, ActivatePassSuccess, ACTIVATEPASS_SUCCESS, ActivatePassFailure, ACTIVATEPASS_FAILURE, AttachPass, ATTACHPASS } from './definitions';
+import { REVIVETOKEN, ReviveToken, ReviveTokenSuccess, REVIVETOKEN_SUCCESS, ReviveTokenFailure, REVIVETOKEN_FAILURE, Logout, LOGOUT, LOGOUT_SUCCESS, LogoutSuccess, RefreshPage, PAGE_REFRESH, Offline, OFFLINE, Online, ONLINE, PollStatusAPI, POLLSTATUSAPI, ActivatePass, ACTIVATEPASS, ActivatePassSuccess, ACTIVATEPASS_SUCCESS, ActivatePassFailure, ACTIVATEPASS_FAILURE, AttachPass, ATTACHPASS, GOTOSTYLLUS, GotoStyllus, GOTOUMBRELA, GotoUmbrella } from './definitions';
 
 export default class HeimdallActionGen {
     public static reviveToken(refreshToken: string, isLocal: boolean): ReviveToken {
@@ -81,6 +81,18 @@ export default class HeimdallActionGen {
             payload: {
                 attachPass: attachPass
             }
+        }
+    }
+
+    public static gotoStyllus(): GotoStyllus {
+        return {
+            type: GOTOSTYLLUS
+        }
+    }
+
+    public static gotoUmbrella(): GotoUmbrella {
+        return {
+            type: GOTOUMBRELA
         }
     }
 }

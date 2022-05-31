@@ -19,6 +19,8 @@ import signInCon from "../Authentication/Container/signInCon";
 import signUpCon from "../Authentication/Container/signUpCon";
 import KeycloakRedirection from "../Keycloak/Pages/keycloak-redirection";
 import TemplateCon from "../Templates/Container/templatesContainer";
+import DraftContainer from "../Draft/Container/DraftContainer";
+
 export interface RouteInterface {
 	path: string;
 	component: any;
@@ -110,6 +112,11 @@ export const ROUTES: RouteInterface[] = [
 		path: "/templates",
 		component: TemplateCon,
 		exact: true
+	},
+	{
+		path: "/draftingreview",
+		component: DraftContainer,
+		exact: true
 	}
 ];
 
@@ -124,4 +131,12 @@ export const FREEROUTES: RouteInterface[] = [
 		component: signInCon,
 		exact: true,
 	},
+];
+
+export const STYLUSROUTES: RouteInterface[] = [
+	{
+		path: "/template",
+		component: TemplateCon,
+		exact: true,
+	}
 ];
