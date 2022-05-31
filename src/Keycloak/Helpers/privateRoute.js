@@ -156,8 +156,9 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
         // Origin: process.env.REACT_APP_HOST,
       },
     };
-    const url_data =
-      process.env.REACT_APP_SITE_API + "contracts/useridbytoken/";
+    // const url_data =
+    //   process.env.REACT_APP_SITE_API + "contracts/useridbytoken/";
+    const url_data = process.env.REACT_APP_SITE_API + "contracts/userprofile/";
     axios
       .get(url_data, options)
       .then(function (response) {
@@ -173,12 +174,15 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
         // );
         if (response.status == 200) {
           setUserId("user_id", response.data.user_id);
-          console.log("Get User Id ", response);
+          console.log(
+            "🚀 ~ file: privateRoute.ts ~ line 151 ~ User Profile",
+            response
+          );
           // console.log("logged Innnnnn +++++ goto user profile");
           // notificationWatcher();
           // notificationWatcher();
           // getData();
-          get_Data();
+          // get_Data();
           // sagaMiddleWare.run(notificationWatcher);
           // getUserProfileID();
           // console.log("logged Innnnnn +++++77");

@@ -33,6 +33,7 @@ const CheckLogInStatusInKeycloak = () => {
   return true;
   // return false;
 };
+
 export default class HeimdallUtil {
   public static listenStorageChange(dispatch: any) {
     return function storeListener(storeEvent: any) {
@@ -68,7 +69,7 @@ export default class HeimdallUtil {
   }
   public static getConfig(extraToken?: string) {
     var tokenLatest: string = "";
-    tokenLatest = "Token 2e8c259163886711152ce41256fbedc1fa125569"; //"Bearer " + getLocalStorage("accessToken")?.toString();
+    tokenLatest = "Bearer " + getLocalStorage("accessToken")?.toString();
     // console.log(
     // 	"🚀 ~ file: heimdallUtil.ts ~ line 67 ~ HeimdallUtil ~ getConfig ~ tokenLatest",
     // 	tokenLatest

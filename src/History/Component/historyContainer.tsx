@@ -27,11 +27,6 @@ const options = {
     Origin: process.env.REACT_APP_HOST,
   },
 };
-const url_data =
-  process.env.REACT_APP_SITE_API +
-  "users/ec7fef36-6abb-433f-9f43-15bef601a7e6/";
-const test = "http://localhost:8000/api/v1/contracts/";
-console.log("Response++++++++++++++++", getLocalStorage(`accessToken`));
 
 interface Props {
   pageWatcher: (page: string) => void;
@@ -92,17 +87,6 @@ export default class HistoryContainer extends Component<Props, State> {
   };
 
   componentDidMount() {
-    // ,
-    // 'Origin': process.env.REACT_APP_HOST
-
-    /* axios
-      .get(test, options)
-      .then((response) => {
-        console.log("Response++++++++++++++++;;;;;;;;;;", response);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });*/
     let { getUserUploads, pageWatcher, changeStatus } = this.props;
     console.log("🚀 ~ file: historyContainer.tsx");
     getUserUploads();
@@ -128,12 +112,9 @@ export default class HistoryContainer extends Component<Props, State> {
 
     const uploadedData = JSON.parse(JSON.stringify(uploadsArray));
     let uploaded_data = uploadedData.results;
-    console.log("uploadde data", uploaded_data);
     if (typeof uploaded_data !== "undefined" && uploaded_data != null) {
-      console.log("Not Undefined and Not Null");
     } else {
       uploaded_data = [];
-      console.log("Undefined or Null");
     }
     if (historyLoader) {
       return <BarLoader />;
@@ -147,71 +128,48 @@ export default class HistoryContainer extends Component<Props, State> {
               </div>
             </div>
           )}
-          {/* 88888 ---------{JSON.stringify(testdata)} */}
           {uploaded_data.length > 0 && (
             <>
               {Object.keys(uploaded_data).map(function (key, values) {
                 return (
-                  <>
-                    <div className="mb-2">
-                      <div className="row upload-file-item">
-                        <div
-                          className="col-md-10 cursor-pointer"
-                          style={{ display: "contents" }}
-                        >
-                          <div className="col-md-2 file-name-style">
-                            {uploaded_data[key].file_name}
-                          </div>
-                          <div className="col-md-2 file-name-style">
-                            {uploaded_data[key].created_by}
-                          </div>
-                          <div className="col-md-2 file-name-style">
-                            {uploaded_data[key].created_on}
-                          </div>
-                          <div className="col-md-2 file-name-style">
-                            {uploaded_data[key].file_size}
-                          </div>
-                          <div className="col-md-2 file-name-style">
-                            {uploaded_data[key].status}
-                          </div>
-                          <div className="col-md-2 tooltip">
-                            <Tooltip
-                              title={"Delete file"}
-                              placement="right-end"
-                            >
-                              <img
-                                style={{ cursor: "pointer" }}
-                                src="/static_images/delete-icon.svg"
-                                alt="delete-icn"
-                              />
-                            </Tooltip>
-                          </div>
+                  <div className="mb-2" key={`contracts${key}`}>
+                    <div className="row upload-file-item">
+                      <div
+                        className="col-md-10 cursor-pointer"
+                        style={{ display: "contents" }}
+                      >
+                        <div className="col-md-2 file-name-style">
+                          {uploaded_data[key].file_name}
+                        </div>
+                        <div className="col-md-2 file-name-style">
+                          {uploaded_data[key].created_by}
+                        </div>
+                        <div className="col-md-2 file-name-style">
+                          {uploaded_data[key].created_on}
+                        </div>
+                        <div className="col-md-2 file-name-style">
+                          {uploaded_data[key].file_size}
+                        </div>
+                        <div className="col-md-2 file-name-style">
+                          {uploaded_data[key].status}
+                        </div>
+                        <div className="col-md-2 tooltip">
+                          <Tooltip title={"Delete file"} placement="right-end">
+                            <img
+                              style={{ cursor: "pointer" }}
+                              src="/static_images/delete-icon.svg"
+                              alt="delete-icn"
+                            />
+                          </Tooltip>
                         </div>
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               })}
-              <div className="row">
-                <div className="col-md-12 mt-2 mb-4">
-                  <UploadHeader />
-                </div>
-              </div>
             </>
           )}
 
-          {/* {data.results.map((file2, i) => (
-             <React.Fragment key={i}>
-             <FileListComponent
-               file={file2}
-               history={history}
-               from={"uploads"}
-               saveDeleteDetails={saveDeleteDetails}
-             />
-           </React.Fragment>
-          ))} */}
-          <br />
-          <br />
           {uploadsArray.length > 0 && (
             <>
               888888999999
@@ -256,7 +214,23 @@ export default class HistoryContainer extends Component<Props, State> {
     let { userUploads, history } = this.props;
     let { selectedFilter } = this.state;
 
-    let data = userUploads;
+    const uploadedData = JSON.parse(JSON.stringify(userUploads));
+    let uploaded_data = uploadedData.results;
+    var total_size = 0;
+    if (typeof uploaded_data !== "undefined" && uploaded_data != null) {
+      for (var i = 0; i < uploaded_data.length; i++) {
+        total_size += uploaded_data[i].file_size;
+      }
+    } else {
+      uploaded_data = [];
+    }
+
+    console.log(
+      "🚀 ~ file: historyContainer.tsx ~ line 24 ~ Number of Contract List",
+      uploaded_data.length,
+      "Total Size ",
+      total_size
+    );
     return (
       <div>
         <div className="row">
@@ -269,17 +243,6 @@ export default class HistoryContainer extends Component<Props, State> {
                 <div className="row">
                   <div className="col-md-12 pl-0">
                     <h4>Uploads</h4>
-                    {/* {JSON.stringify(this.props.userUploads[0])} */}
-                    {/* <pre>{JSON.stringify(history, null, 2)}</pre> */}
-                    {/* <pre>{JSON.stringify(userUploads, null, 2)}</pre> */}
-
-                    {/* {Object.keys(userUploads).map(function (testkey, values) {
-                      // return <div>******</div>;
-                    })} */}
-
-                    {/* <pre>{userUploads.length.toString()}</pre> */}
-                    {/* <pre>{JSON.stringify(selectedFilter, null, 2)}</pre> */}
-                    {/* {JSON.stringify(userUploads)} */}
                   </div>
                 </div>
               </div>
@@ -288,41 +251,6 @@ export default class HistoryContainer extends Component<Props, State> {
               <div className="col-md-10 mt-3 ml-5">
                 <div className="row">
                   <div className="col-md-12">
-                    {/* <div className="col-md-3">
-                      <div className="row">
-                        <div className="col-md-4 quick-look-card-container-disable">
-                          <div className="row">
-                            <div className="col-md-12 quick-look-title">
-                              445
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-12 quick-look-sub-title mt-2">
-                              TOTAL UPLOADS
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-4 quick-look-card-container-disable">
-                          <div className="row">
-                            <div className="col-md-12 quick-look-title">
-                              445
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-12 quick-look-sub-title mt-2">
-                              TOTAL UPLOADS
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
-
-                    {/* <QuickLook
-                      fileInfo={userUploads}
-                      selectFilter={this.selectFilter}
-                      selectedFilter={selectedFilter}
-                    /> */}
-
                     <div className="row">
                       <div className="col-md-3">
                         <div className="row">
@@ -330,7 +258,7 @@ export default class HistoryContainer extends Component<Props, State> {
                           <div className="col-md-12 quick-look-card-container">
                             <div className="row">
                               <div className="col-md-12 quick-look-title">
-                                2
+                                {uploaded_data.length}
                               </div>
                             </div>
                             <div className="row">
@@ -347,7 +275,7 @@ export default class HistoryContainer extends Component<Props, State> {
                           <div className="col-md-12 quick-look-card-container">
                             <div className="row">
                               <div className="col-md-12 quick-look-title">
-                                2048
+                                {87471} MB
                               </div>
                             </div>
                             <div className="row">
@@ -376,47 +304,6 @@ export default class HistoryContainer extends Component<Props, State> {
             </div>
           </div>
         </div>
-        {/* <div className="row">
-        <div className="col-md-1" style={{ zIndex: 2 }}>
-          <SideNavbar history={history} />
-        </div>
-        <div className="col-md-11 mt-5">
-          <div className="row">
-            <div className="col-md-10 mt-3 ml-5">
-              <div className="row">
-                <div className="col-md-12 pl-0">
-                  <h4>Uploads</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-10 mt-3 ml-5">
-              <div className="row">
-                <div className="col-md-12">
-                  <QuickLook
-                    fileInfo={userUploads}
-                    selectFilter={this.selectFilter}
-                    selectedFilter={selectedFilter}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-9"></div>
-                {userUploads.length > 0 && (
-                  <div
-                    className="col-md-3 message-link"
-                    onClick={() => (window.location.href = "/addfiles")}
-                  >
-                    Go back to uploading files
-                  </div>
-                )}
-              </div>
-              {this.switchRender()}
-            </div>
-          </div>
-        </div>
-      </div> */}
       </div>
     );
   }

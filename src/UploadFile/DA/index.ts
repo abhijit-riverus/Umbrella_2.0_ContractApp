@@ -5,6 +5,7 @@ import {
   PresignedDataField,
 } from "../Constants/types";
 import { getLocalStorage } from "../../Authentication/Actions/authentication";
+import { off } from "process";
 const APIPaths = {
   getS3PresignedURL:
     process.env.REACT_APP_SITE_API + "contracts/aws/presigned-url/",
@@ -14,7 +15,7 @@ const APIPaths = {
 const APIConfig = () => ({
   headers: {
     Authorization: `Bearer ${getLocalStorage(`accessToken`)}`,
-    Origin: process.env.REACT_APP_HOST,
+    // Origin: process.env.REACT_APP_HOST,
     // "Access-Control-Allow-Origin": "*",
     // "Access-Control-Allow-Methods": "GET, POST",
     // "Content-Type": "application/json",
@@ -55,27 +56,26 @@ class UploadFileDA {
       formData.append(key, presignedDataField[key as keyof PresignedDataField]);
     });
 
-    // append the file
     formData.append("file", file);
-    console.log(
-      "presignedPostData.url",
-      presignedPostData.url,
-      "formData",
-      formData,
-      "onHandleFileProgress",
-      onHandleFileProgress
-    );
 
-    // post the data on the s3 url
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+      },
+      // crossDomain: true,
+    };
+
     return axios
       .post(presignedPostData.url, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        axiosConfig,
         ...onHandleFileProgress,
       })
       .then(function (response) {
-        console.log(response);
+        console.log(
+          "🚀 ~ file: index.ts ~ line 45 ~ upload_file_in_s3_bucket ~ .then ~ response",
+          response
+        );
       })
       .catch(function (error) {
         console.log(error);
