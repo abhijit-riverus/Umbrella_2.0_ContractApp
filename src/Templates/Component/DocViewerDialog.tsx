@@ -89,8 +89,8 @@ const DocViewerDialog = (props: Props) => {
             contractduration: durationNum.current?.value + ' ' + durationLength,
             confidentialityduration: confidentDurationNum.current?.value + ' ' + confidentDurationLength,
             nonsolicitationduration: solicitDurationNum.current?.value + ' ' + solicitDurationLength,
-            incorporationcountry1: country1.current?.value,
-            incorporationcountry2: country2.current?.value,
+            country1: country1.current?.value,
+            country2: country2.current?.value,
             discnotcduration: discnotduration.current?.value,
             jurisdiction: jurisdiction.current?.value,
             signatory1name: signatory1name.current?.value,
@@ -103,7 +103,7 @@ const DocViewerDialog = (props: Props) => {
             return;
         }
         console.log(json);
-        generateDocument(json, require("../../Assets/NDA_Template.docx"), props.fileName.split(".")[0]);
+        generateDocument(json, require("../../Assets/NDA_Template_3.docx"), props.fileName.split(".")[0]);
     }
 
     const setDuration = (event: any) => {
