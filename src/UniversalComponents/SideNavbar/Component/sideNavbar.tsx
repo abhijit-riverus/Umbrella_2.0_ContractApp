@@ -8,6 +8,7 @@ interface Props {
     pageType: string;
     history: History;
     platform: string;
+    gotoStyllus: () => void;
 }
 
 interface IconState {
@@ -96,16 +97,22 @@ export class SideNavbar extends Component<Props, State> {
                 },
                 {
                     icon: '/static_images/template_icn.svg',
-                    name: 'Approvals',
+                    name: 'approvals',
                     text: 'Manage your template here'
                 },
                 {
                     icon: '/static_images/template_icn.svg',
-                    name: 'Signatures',
+                    name: 'signatures',
                     text: 'Manage your template here'
                 }
             ],
         };
+    }
+
+    componentDidMount() {
+        if (window.location.href.includes('templates') || window.location.href.includes('draftingreview')) {
+            this.props.gotoStyllus();
+        }
     }
 
     setClassName(iconName: string) {
