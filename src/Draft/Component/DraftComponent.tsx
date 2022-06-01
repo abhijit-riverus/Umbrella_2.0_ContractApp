@@ -30,6 +30,54 @@ const DraftComponent = (props: Props) => {
         props.pageWatcher("draftingreview");
     }, []);
 
+    useEffect(() => {
+        const draftContractData: ContractData[] = [{
+            projectName: ["Project 2022"],
+            contractName: "The Red Hat Enterprise Agreement.pdf",
+            contractType: "License Agreement",
+            counterPartyName: ["Red Hat, Inc"],
+            owner: ['Abhijit Barick'],
+            created: new Date().toLocaleDateString(),
+            status: '',
+            deadline: new Date().toLocaleDateString(),
+            link: ""
+        }, {
+            projectName: ["Amazon"],
+            contractName: "Amazon Advertisers Agreement.pdf",
+            contractType: "License Agreement",
+            counterPartyName: ["Amazon.com Services", "Amazon Media EU"],
+            owner: ['Abhijit Barick'],
+            created: new Date().toLocaleDateString(),
+            status: '',
+            deadline: new Date().toLocaleDateString(),
+            link: ""
+        },
+        {
+            projectName: ["Amazon"],
+            contractName: "Amazon Developer Services Agreement.pdf",
+            contractType: "NDA",
+            counterPartyName: ["Amazon.com Services", "Business Entity"],
+            owner: ['Abhijit Barick'],
+            created: new Date().toLocaleDateString(),
+            status: '',
+            deadline: new Date().toLocaleDateString(),
+            link: ""
+        },
+        {
+            projectName: ["Amazon"],
+            contractName: "Amazon Advertisers Agreement.pdf",
+            contractType: "License Agreement",
+            counterPartyName: ["Amazon.com Services"],
+            owner: ['Abhijit Barick'],
+            created: new Date().toLocaleDateString(),
+            status: '',
+            deadline: new Date().toLocaleDateString(),
+            link: ""
+        },
+        ]
+        setDraftContracts([...draftContracts, ...draftContractData]);
+    }, []);
+
     const [value, setValue] = useState(0);
     const [open, setOpen] = useState(false);
     const [selectContractFrom, setSelectContractFrom] = useState('exec');
@@ -71,20 +119,20 @@ const DraftComponent = (props: Props) => {
                 <div className="col-md-8">
                     <div className="draft-row">
                         <div className="draft-count-box">
-                            <p className="draft-count">70</p>
+                            <p className="draft-count">2</p>
                             <p className="margin-0">TOTAL CONTRACTS</p>
                         </div>
                         <div className="draft-count-box">
-                            <p className="draft-count">20</p>
+                            <p className="draft-count">2</p>
                             <p className="margin-0">MY CONTRACTS</p>
                         </div>
                         <div className="draft-count-box">
-                            <p className="draft-count">35</p>
+                            <p className="draft-count">0</p>
                             <p className="margin-0">APPROVED</p>
                         </div>
                         <div className="draft-count-box">
-                            <p className="draft-count">15</p>
-                            <p className="margin-0">APPROVED</p>
+                            <p className="draft-count">2</p>
+                            <p className="margin-0">FOR APPROVAL</p>
                         </div>
                     </div>
                 </div>
@@ -203,7 +251,8 @@ const DraftComponent = (props: Props) => {
                 owner: ['Abhijit Barick'],
                 created: new Date().toLocaleDateString(),
                 status: '',
-                deadline: new Date(deadline).toLocaleDateString()
+                deadline: new Date(deadline).toLocaleDateString(),
+                link: ""
             }
             setDraftContracts([...draftContracts, draftContract]);
         }

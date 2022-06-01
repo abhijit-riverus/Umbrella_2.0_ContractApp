@@ -7,6 +7,18 @@
     justify-content: flex-start;
 }
 
+.template-list-view {
+    cursor: pointer;
+}
+
+// .template-list-view:hover {
+//     box-shadow: 1px 1px 5px 5px #EAEAEA;
+// }
+
+.close-icn {
+    cursor: pointer;
+}
+
 .template-count-box {
     border: 1px solid #EAEAEA;
     background-color: white;
@@ -70,7 +82,7 @@
     .initials {
         position: relative;
         // top: $size * 0.1;
-        top: 5px;
+        top: 2px;
         font-size: $size * 0.4;
         line-height: $size * 0.7;
         color: #fff;
@@ -83,10 +95,14 @@
     @include avatar(100px);
 }
 
-.avatar-circle-sm {
-    @include avatar(35px);
+.template-avatar-circle-sm {
+    @include avatar(30px);
 }
 
 .avatar-circle-lg {
     @include avatar(250px);
+}
+
+#react-doc-viewer #header-bar {
+    display: none !important;
 }

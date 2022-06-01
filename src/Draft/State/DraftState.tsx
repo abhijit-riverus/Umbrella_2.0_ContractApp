@@ -7,4 +7,5 @@ export interface ContractData {
     created: string;
     status: string;
     deadline: string;
+    link: string;
 }
