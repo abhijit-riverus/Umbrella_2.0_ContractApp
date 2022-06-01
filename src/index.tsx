@@ -27,7 +27,7 @@ import clauseLibraryWatcher from "./ClauseLibrary/Saga/clauseLibrarySaga";
 import notificationWatcher from "./UniversalComponents/Notification/Saga/notificationSaga";
 import newAnalysisWatcher from "./NewAnalysis/Saga/newAnalysisSaga";
 import newDashboardWatcher from "./NewDashboard/Saga/newDashboardSaga";
-import logger from "redux-logger";
+// import logger from "redux-logger";
 
 // import { getLocalStorage } from "./Authentication/Actions/authentication";
 // const user_id = getLocalStorage("user_id");
@@ -40,7 +40,7 @@ import logger from "redux-logger";
 const sagaMiddleWare = createSagaMiddleware();
 export const store = createStore(
   mainReducer,
-  applyMiddleware(sagaMiddleWare, logger)
+  applyMiddleware(sagaMiddleWare)
 );
 
 sagaMiddleWare.run(heimdallWatcher);
