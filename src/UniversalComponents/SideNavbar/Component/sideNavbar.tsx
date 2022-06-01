@@ -107,6 +107,20 @@ export class SideNavbar extends Component<Props, State> {
             ],
         };
     }
+
+    setClassName(iconName: string) {
+        let className = '';
+        if (iconName == 'dataDictionary' || iconName == 'signatures') {
+            className = 'sidenav-title p-3 pt-0';
+        } else if (iconName == 'approvals') {
+            className = "sidenav-title p-3 pt-0 ht-59";
+        } else className = "sidenav-title p-3";
+
+        if (iconName == this.props.pageType) {
+            className = className.replace('sidenav-title', 'sidenav-title-active');
+        }
+        return className;
+    }
     render() {
         let { iconsList, styllusIconsList } = this.state;
         let { pageType, platform } = this.props;
@@ -155,7 +169,7 @@ export class SideNavbar extends Component<Props, State> {
                                         <div className="row" key={i}>
                                             <div className="col-md-12 tooltip sidenav-title-layout cursor-pointer">
                                                 <span className="tooltiptext">{icon.text}</span>
-                                                <div className={(pageType === 'documentlibrary' || pageType === 'clauselibrary') && icon.name === pageType ? 'sidenav-title-active p-1' : icon.name === pageType ? "sidenav-title-active p-3" : (icon.name === 'documentlibrary' || icon.name === 'clauselibrary') ? "sidenav-title p-1" : "sidenav-title p-3"} onClick={() => (icon.name == 'templates' || icon.name == 'draftingreview') && this.selectTab(icon.name)}>
+                                                <div className={this.setClassName(icon.name)} onClick={() => (icon.name == 'templates' || icon.name == 'draftingreview') && this.selectTab(icon.name)}>
                                                     <span><img src={icon.name === pageType ? icon.icon.replace('.svg', '-active.svg') : icon.icon} alt="navbar-img" /></span><br />
                                                     <span className={icon.name === pageType ? 'sidenav-text-active' : 'sidenav-text'}>{capitalizeFirstLetter(icon.name)}</span>
                                                 </div>
