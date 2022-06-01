@@ -31,7 +31,7 @@ interface Props {
     totalFiles: File[]
   ) => void;
   totalFiles: File[];
-  saveDeleteDetails: (documentName: string, uniqueFileId: number) => void;
+  saveDeleteDetails: (documentName: string, uniqueFileId: string) => void;
 }
 
 interface State {
@@ -95,12 +95,12 @@ export default class UploadContainer extends Component<Props, State> {
               <Scrollable maxHeight={370} minHeight={"50vh"}>
                 {fileInfo.map((file, i) => (
                   <React.Fragment key={i}>
-                    <FileListComponent
+                    {/* <FileListComponent
                       file={file}
                       history={history}
                       from={"addfiles"}
                       saveDeleteDetails={saveDeleteDetails}
-                    />
+                    /> */}
                   </React.Fragment>
                 ))}
               </Scrollable>
@@ -155,11 +155,11 @@ export default class UploadContainer extends Component<Props, State> {
             <div className="col-md-10 mt-3 ml-5">
               <div className="row">
                 <div className="col-md-10">
-                  <QuickLook
+                  {/* <QuickLook
                     fileInfo={fileInfo}
                     selectFilter={this.selectFilter}
                     selectedFilter={selectedFilter}
-                  />
+                  /> */}
                 </div>
                 {fileInfo.length > 0 && (
                   <div

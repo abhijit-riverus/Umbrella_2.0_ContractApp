@@ -1,20 +1,20 @@
 import React from "react";
 import { History } from "history";
-import { FileInfo } from "../../Upload/State/uploadState";
+import { FileInfo, FileList } from "../../Upload/State/uploadState";
 
 interface Props {
-	history: History;
-	isLoggedIn: boolean;
-	getUserUploads: () => void;
-	userUploads: FileInfo[];
+  history: History;
+  isLoggedIn: boolean;
+  getUserUploads: () => void;
+  userUploads: FileList[];
 }
 
 export default class IntroPage extends React.Component<Props> {
-	componentDidMount() {
-		return this.props.history.push("/dashboard");
-	}
+  componentDidMount() {
+    return this.props.history.push("/dashboard");
+  }
 
-	/* componentWillReceiveProps(nextProps: Props) {
+  /* componentWillReceiveProps(nextProps: Props) {
         // setTimeout(() => {
         // else redirect to my dashboard
         if (this.props.userUploads !== nextProps.userUploads) {
@@ -27,7 +27,7 @@ export default class IntroPage extends React.Component<Props> {
         // }, 3000);
     } */
 
-	render() {
-		return <div />;
-	}
+  render() {
+    return <div />;
+  }
 }

@@ -57,6 +57,47 @@ export default class AxiosGateWay {
     return response;
   }
 
+  public static deleteFile(url: string, extraToken?: string) {
+    var response = axios.delete(url, HeimdallUtil.getConfig(extraToken));
+    console.log(
+      "🚀 ~ file: axiosUtils.ts ~ line 18 ~ AxiosGateWay ~ deleteFile ~ response",
+      response
+    );
+    response.then((result) => {
+      console.log(
+        "🚀 ~ file: axiosUtils.ts ~ line 23 ~ AxiosGateWay ~ deleteFile response.then ~ result",
+        result
+      );
+      onlineMode();
+    });
+    response.catch((error) => {
+      console.log(
+        "🚀 ~ file: axiosUtils.ts ~ line 26 ~ AxiosGateWay ~ get ~ error",
+        url,
+        error
+      );
+      if (!error.response) {
+        alertUser();
+      }
+      if (
+        (error.response.status === 403 &&
+          localStorage.getItem("accessToken") !== "LOGOUT") ||
+        (error.response.status === 504 &&
+          localStorage.getItem("accessToken") !== "LOGOUT")
+      ) {
+        store.dispatch(HeimdallActionGen.reloadPage(true));
+      }
+      if (error.response.status === 406) {
+        store.dispatch(HeimdallActionGen.attachPass(true));
+      }
+      if (!isNullOrUndefined(error.response) && error.response.status === 401) {
+        var refreshToken = HeimdallUtil.getTokenFromStorage().refreshToken;
+        AxiosGateWay.validateRefreshToken(refreshToken);
+      }
+    });
+    return response;
+  }
+
   public static postTwo(
     url: string,
     headers: any,

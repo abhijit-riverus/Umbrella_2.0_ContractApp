@@ -1,5 +1,6 @@
 import {
   GETUSERUPLOADS_SUCCESS,
+  GETUSERUPLOADS_SUCCESSNEW,
   CHANGESTATUS_SUCCESS,
   HistoryActions,
   GETUSERUPLOADS,
@@ -8,7 +9,11 @@ import {
   SAVEDELETEDETAILS,
 } from "../Actions/def";
 import { PROCESSING, DONE } from "../../Constants/const";
-import { StatusPoints, FileInfo } from "../../Upload/State/uploadState";
+import {
+  StatusPoints,
+  FileInfo,
+  FileList,
+} from "../../Upload/State/uploadState";
 import HistoryState, { defaultHistoryState } from "../State/historyState";
 
 export default function historyReducer(
@@ -20,6 +25,16 @@ export default function historyReducer(
       return { ...state, historyLoader: true };
     }
     case GETUSERUPLOADS_SUCCESS: {
+      console.log("🚀 ~ file: historyRed.ts", action.payload.userUploads);
+      //userUploads: defineProcessStatus(action.payload.userUploads.slice(0)),
+      return {
+        ...state,
+        // userUploads: defineProcessStatus(action.payload.userUploads),
+        historyLoader: false,
+      };
+    }
+
+    case GETUSERUPLOADS_SUCCESSNEW: {
       console.log("🚀 ~ file: historyRed.ts", action.payload.userUploads);
       //userUploads: defineProcessStatus(action.payload.userUploads.slice(0)),
       return {
@@ -55,8 +70,8 @@ export default function historyReducer(
   }
 }
 
-function defineProcessStatus(oldState: FileInfo[]) {
-  for (let i = 0; i < oldState.length; i++) {
+function defineProcessStatus(oldState: FileList[]) {
+  /*for (let i = 0; i < oldState.length; i++) {
     let bool1 = oldState[i].status.textract;
     let bool2 = oldState[i].status.analytics;
     let bool3 = oldState[i].status.normalization;
@@ -76,12 +91,12 @@ function defineProcessStatus(oldState: FileInfo[]) {
       oldState[i].fileState.progressState.process = PROCESSING;
       oldState[i].fileState.progressState.percentage = 25;
     }
-  }
+  }*/
   return oldState;
 }
 
-function changeProcessStatus(oldState: FileInfo[], statusPoints: StatusPoints) {
-  let index = oldState.findIndex((el) => {
+function changeProcessStatus(oldState: FileList[], statusPoints: StatusPoints) {
+  /*let index = oldState.findIndex((el) => {
     return el.fileState.fileId === statusPoints.fileId;
   });
   if (index > -1) {
@@ -104,6 +119,6 @@ function changeProcessStatus(oldState: FileInfo[], statusPoints: StatusPoints) {
       oldState[index].fileState.progressState.process = PROCESSING;
       oldState[index].fileState.progressState.percentage = 25;
     }
-  }
+  }*/
   return oldState;
 }
