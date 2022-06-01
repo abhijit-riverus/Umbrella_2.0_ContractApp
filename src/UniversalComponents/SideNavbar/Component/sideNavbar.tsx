@@ -97,12 +97,12 @@ export class SideNavbar extends Component<Props, State> {
                 },
                 {
                     icon: '/static_images/approval-icn.svg',
-                    name: 'Approvals',
+                    name: 'approvals',
                     text: 'Manage your template here'
                 },
                 {
                     icon: '/static_images/signature-icn.svg',
-                    name: 'Signatures',
+                    name: 'signatures',
                     text: 'Manage your template here'
                 }
             ],
@@ -161,7 +161,7 @@ export class SideNavbar extends Component<Props, State> {
                                         <div className="row" key={i}>
                                             <div className="col-md-12 tooltip sidenav-title-layout cursor-pointer">
                                                 <span className="tooltiptext">{icon.text}</span>
-                                                <div className={(pageType === 'documentlibrary') && icon.name === pageType ? 'sidenav-title-active p-1' : icon.name === pageType ? "sidenav-title-active p-3" : (icon.name === 'documentlibrary') ? "sidenav-title p-1" : "sidenav-title p-3"} onClick={() => (icon.name == 'templates' || icon.name == 'draftingreview') && this.selectTab(icon.name)}>
+                                                <div className={icon.name == "dataDictionary" || icon.name == 'signatures' ? "sidenav-title p-3 pt-0" : icon.name == 'approvals' ? "sidenav-title p-3 pt-0 ht-59" : "sidenav-title p-3"} onClick={() => (icon.name == 'templates' || icon.name == 'draftingreview') && this.selectTab(icon.name)}>
                                                     <span><img src={icon.name === pageType ? icon.icon.replace('.svg', '-active.svg') : icon.icon} alt="navbar-img" /></span><br />
                                                     <span className={icon.name === pageType ? 'sidenav-text-active' : 'sidenav-text'}>{capitalizeFirstLetter(icon.name)}</span>
                                                 </div>
