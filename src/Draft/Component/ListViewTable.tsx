@@ -39,7 +39,7 @@ const ListViewTable = (props: Props) => {
     return (
         <>
             {draftContracts.map((draftContract: ContractData, key: number) =>
-                <div onClick={() => openDocViewer(draftContract)} key={key} className="col-md-12" style={{ borderBottom: '1px solid #E1E1E1', height: '45px', backgroundColor: 'white' }}>
+                <div onClick={() => openDocViewer(draftContract)} key={key} className="template-list-view col-md-12 hover mb-2" style={{ height: '45px', backgroundColor: key % 2 != 0 ? 'white' : 'rgba(0,0,0,.04)' }}>
                     <div className="row template-list-view-table">
                         <div className="col-md-1">
                             <Tooltip title={draftContract.projectName} arrow>

@@ -40,7 +40,7 @@ const ListViewTable = (props: Props) => {
     return (
         <>
             {templates.map((template: TemplateData, key: number) =>
-                <div onClick={() => openDocViewer(template)} key={key} className="col-md-12 template-list-view" style={{ borderBottom: '1px solid #E1E1E1', marginLeft: '0.8rem', height: '45px', backgroundColor: 'white' }}>
+                <div onClick={() => openDocViewer(template)} key={key} className="col-md-12 template-list-view mb-2" style={{ marginLeft: '0.8rem', height: '45px', backgroundColor: key % 2 != 0 ? 'white' : 'rgba(0,0,0,.04)' }}>
                     <div className="row template-list-view-table">
                         <div className="col-md-3">
                             <Tooltip title={template.name} arrow>

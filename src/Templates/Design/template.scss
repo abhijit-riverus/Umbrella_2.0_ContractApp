@@ -9,11 +9,13 @@
 
 .template-list-view {
     cursor: pointer;
+    box-shadow: 0px 1px 3px 3px #EAEAEA;
 }
 
-// .template-list-view:hover {
-//     box-shadow: 1px 1px 5px 5px #EAEAEA;
-// }
+.template-list-view:hover {
+    background-color: rgba(0, 0, 0, .075) !important;
+}
+
 
 .close-icn {
     cursor: pointer;

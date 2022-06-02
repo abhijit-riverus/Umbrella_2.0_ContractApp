@@ -22,7 +22,7 @@ const DraftListView = (props: Props) => {
     const getAllTasksData = () => { return [] };
     return (
         <div className="col-md-12 p-0" style={{}}>
-            <div className="row" style={{ borderBottom: '1px solid #E1E1E1', marginLeft: '0rem', marginRight: '0rem', backgroundColor: 'white' }}>
+            <div className="row" style={{ marginLeft: '0rem', marginRight: '0rem', backgroundColor: 'white' }}>
                 <ListViewHeader setSortAndOrder={setSortAndOrder} getAllTasksData={getAllTasksData} />
                 <ListViewTable draftContractData={props.draftContractData} />
             </div>
