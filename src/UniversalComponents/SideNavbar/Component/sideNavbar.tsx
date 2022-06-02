@@ -117,7 +117,9 @@ export class SideNavbar extends Component<Props, State> {
 
     setClassName(iconName: string) {
         let className = '';
-        if (iconName == 'dataDictionary' || iconName == 'signatures') {
+        if (iconName == 'clauselibrary') {
+            className = 'sidenav-title p-3 ht-79';
+        } else if (iconName == 'dataDictionary' || iconName == 'signatures') {
             className = 'sidenav-title p-3 pt-0';
         } else if (iconName == 'approvals') {
             className = "sidenav-title p-3 pt-0 ht-59";
