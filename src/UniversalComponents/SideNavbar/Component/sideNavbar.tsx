@@ -76,12 +76,12 @@ export class SideNavbar extends Component<Props, State> {
             selectedTab: props.pageType,
             styllusIconsList: [
                 {
-                    icon: '/static_images/template_icn.svg',
+                    icon: '/static_images/draft-icn.svg',
                     name: 'draftingreview',
                     text: 'Manage your drafts here'
                 },
                 {
-                    icon: '/static_images/clause-library-icn.svg',
+                    icon: '/static_images/clause-library.svg',
                     name: 'clauselibrary',
                     text: 'Access Clause Library here'
                 },
@@ -91,17 +91,17 @@ export class SideNavbar extends Component<Props, State> {
                     text: 'Manage your template here'
                 },
                 {
-                    icon: '/static_images/template_icn.svg',
+                    icon: '/static_images/dictionary-icn.svg',
                     name: 'dataDictionary',
                     text: 'Manage your template here'
                 },
                 {
-                    icon: '/static_images/template_icn.svg',
+                    icon: '/static_images/approval-icn.svg',
                     name: 'approvals',
                     text: 'Manage your template here'
                 },
                 {
-                    icon: '/static_images/template_icn.svg',
+                    icon: '/static_images/signature-icn.svg',
                     name: 'signatures',
                     text: 'Manage your template here'
                 }
