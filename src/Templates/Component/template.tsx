@@ -180,7 +180,7 @@ const Template = (props: Props) => {
                                 >
                                     <MenuItem value={'upload'}>Upload new template</MenuItem>
                                     <MenuItem value={'select'}>Select from Contract</MenuItem>
-                                    <MenuItem value={'request'}>Request a template from riverus</MenuItem>
+                                    <MenuItem value={'request'}>Request a template from Riverus</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>

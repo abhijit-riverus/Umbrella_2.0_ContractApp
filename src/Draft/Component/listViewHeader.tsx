@@ -119,7 +119,7 @@ export default class ListViewHeader extends Component<Props, State> {
             <>
                 <div className="col-md-12 p-0">
                     <div className="row list-view-header">
-                        <div className="col-md-1" >
+                        <div className="col-md-1" style={{ paddingRight: '0' }} >
                             Project Name
                         </div>
                         <div className="col-md-2"
@@ -137,7 +137,7 @@ export default class ListViewHeader extends Component<Props, State> {
                         >
                             Owner
                         </div>
-                        <div className="col-md-1"
+                        <div className="col-md-1" style={{ paddingLeft: '4px' }}
                         >
                             Created on
                         </div>
@@ -145,7 +145,7 @@ export default class ListViewHeader extends Component<Props, State> {
                         >
                             Current Status
                         </div>
-                        <div className="col-md-1"
+                        <div className="col-md-1" style={{ 'paddingLeft': '0' }}
                         >
                             Deadline
                         </div>

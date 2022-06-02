@@ -70,6 +70,12 @@
     width: 31px;
 }
 
+.text-purple {
+    font-weight: 500;
+    color: #88305F;
+    font-size: 15px;
+}
+
 @mixin avatar($size) {
     width: $size;
     height: $size;

@@ -43,7 +43,7 @@ const ListViewTable = (props: Props) => {
                     <div className="row template-list-view-table">
                         <div className="col-md-1">
                             <Tooltip title={draftContract.projectName} arrow>
-                                <div className='text-overflow'>
+                                <div className='text-overflow text-purple'>
                                     {
                                         (draftContract.projectName.length == 0) && <img src="/static_images/empty-dash.svg"></img>
                                     }
@@ -83,7 +83,7 @@ const ListViewTable = (props: Props) => {
                                 {draftContract.owner.length === 0 && <img src="/static_images/empty-dash.svg"></img>}
                                 {draftContract.owner.length < 3 &&
                                     draftContract.owner.map((user: any, key: number) =>
-                                        <div className="avatar-circle-sm" style={{ marginLeft: key > 0 ? '0.5rem' : '', backgroundColor: user.hexCode }} >
+                                        <div className="avatar-circle-sm" style={{ marginLeft: '8px', backgroundColor: user.hexCode }} >
                                             <span className="initials">{extractName(user)}</span>
                                         </div>
                                     )

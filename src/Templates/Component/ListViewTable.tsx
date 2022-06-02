@@ -44,7 +44,7 @@ const ListViewTable = (props: Props) => {
                     <div className="row template-list-view-table">
                         <div className="col-md-3">
                             <Tooltip title={template.name} arrow>
-                                <div className='text-overflow'>
+                                <div className='text-overflow text-purple'>
                                     {
                                         (template.name === null || template.name === '') && <img src="/static_images/empty-dash.svg"></img>
                                     }
@@ -68,7 +68,7 @@ const ListViewTable = (props: Props) => {
                                 {template.owner.length === 0 && <img src="/static_images/empty-dash.svg"></img>}
                                 {template.owner.length < 3 &&
                                     template.owner.map((user: any, key: number) =>
-                                        <div className="template-avatar-circle-sm" style={{ marginLeft: key > 0 ? '0.5rem' : '', backgroundColor: user.hexCode }} >
+                                        <div className="template-avatar-circle-sm" style={{ marginLeft: '8px' }} >
                                             <span className="initials">{extractName(user)}</span>
                                         </div>
                                     )

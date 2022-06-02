@@ -130,7 +130,7 @@ export default class ListViewHeader extends Component<Props, State> {
                         >
                             Owner
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2" style={{ paddingLeft: '4px' }}>
                             Created On
                         </div>
                         <div className="col-md-2"
