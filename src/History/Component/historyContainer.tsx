@@ -145,7 +145,6 @@ export default class HistoryContainer extends Component<Props, State> {
           )}
           {uploadsArray.length === 0 && (
             <div className="row">
-              889999+++++
               <div className="col-md-12 text-center mt-5">
                 <div className="tagline">
                   Digitize your contracts and get instant insights!
