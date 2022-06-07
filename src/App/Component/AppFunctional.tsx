@@ -26,7 +26,6 @@ import {
 } from "../../Authentication/Actions/authentication";
 import { KeycloakProvider } from "../../Keycloak/lib";
 import Nav from "../../Keycloak/Component/nav";
-import { useKeycloak } from "../../Keycloak/lib";
 import {
   STYLLUS,
   UMBRELLA,
@@ -47,6 +46,7 @@ interface Props {
   toggleSearchBarVisibility: (visibility: boolean) => void;
   logoutLoader: boolean;
   platform: string;
+  loggedIn: boolean;
 }
 
 interface State {
@@ -87,7 +87,7 @@ const App = (props: Props) => {
       window.location.reload();
     }
   };
-  const setupKeycloakWithConfig = () => {};
+  const setupKeycloakWithConfig = () => { };
   const onKeycloakTokens = (tokens: any) => {
     console.log(
       "🚀 ~ file: AppFunctional.tsx ~ line 82 ~ onKeycloakTokens ~ tokens",
@@ -127,6 +127,7 @@ const App = (props: Props) => {
     logoutLoader,
     refreshPage,
     platform,
+    loggedIn
   } = props;
   console.log("keycloakConfig", keycloakConfig);
   const realmName = window.location.href.split("/")[3];
@@ -137,7 +138,7 @@ const App = (props: Props) => {
         onTokens={onKeycloakTokens}
       >
         <div style={{ fontFamily: "Arial" }}>
-          <div className="container-fluid static-content">
+          {loggedIn && <div className="container-fluid static-content">
             <Router history={history}>
               {isMobile ? (
                 <Route path={"*"} component={MobileMenu} />
@@ -145,7 +146,7 @@ const App = (props: Props) => {
                 <Route path={"*"} component={Menu} />
               )}
             </Router>
-          </div>
+          </div>}
           <div
             className="container-fluid"
             style={{ position: "absolute", marginLeft: "0px" }}

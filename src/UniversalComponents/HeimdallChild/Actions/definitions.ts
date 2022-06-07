@@ -43,6 +43,8 @@ export type GOTOUMBRELA = typeof GOTOUMBRELA;
 export const UMBRELLA = 'UMBRELLA';
 export const STYLLUS = 'STYLLUS';
 
+export const LOGIN = 'LOGIN';
+export type LOGIN = typeof LOGIN;
 export interface PollStatusAPI {
     type: POLLSTATUSAPI;
 }
@@ -116,6 +118,10 @@ export interface GotoStyllus {
 export interface GotoUmbrella {
     type: GOTOUMBRELA;
 }
+
+export interface Login {
+    type: LOGIN
+}
 export type heimdallActions = ReviveToken |
     ReviveTokenSuccess |
     ReviveTokenFailure |
@@ -129,4 +135,4 @@ export type heimdallActions = ReviveToken |
     ActivatePass |
     ActivatePassSuccess |
     ActivatePassFailure |
-    AttachPass | GotoStyllus | GotoUmbrella;
+    AttachPass | GotoStyllus | GotoUmbrella | Login;

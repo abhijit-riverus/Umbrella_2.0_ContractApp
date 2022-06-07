@@ -18,6 +18,7 @@ export default interface HeimdallState {
     componentClaims: string[];
     attachPass: boolean;
     platform: string;
+    loggedIn: boolean;
 }
 
 export function getDefaultHeimdallState(): HeimdallState {
@@ -37,6 +38,7 @@ export function getDefaultHeimdallState(): HeimdallState {
         occurence: -1,
         componentClaims: HeimdallUtil.getComponentClaims(),
         attachPass: false,
-        platform: UMBRELLA
+        platform: UMBRELLA,
+        loggedIn: false
     };
 }

@@ -60,6 +60,7 @@
     border: none;
     font-size: 14px;
     color: #626262;
+    text-transform: capitalize !important;
 }
 
 .template-card {
@@ -76,6 +77,14 @@
     font-weight: 500;
     color: #88305F;
     font-size: 15px;
+}
+
+.flex-center {
+    justify-content: center !important;
+}
+
+button {
+    font-size: 15px !important;
 }
 
 @mixin avatar($size) {

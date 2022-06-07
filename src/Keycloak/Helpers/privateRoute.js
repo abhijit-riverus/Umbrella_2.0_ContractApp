@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import BarLoader from "../../UniversalComponents/Loader/barLoader";
 
 // import {} from "../../UniversalComponents/Notification/Saga/notificationSaga";
-
+import HeimdallActionGen from "../../UniversalComponents/HeimdallChild/Actions/actionGen";
 import {
   notificationWatcher,
   getData,
@@ -24,6 +24,8 @@ import {
   getUserId,
 } from "../../Authentication/Actions/authentication";
 import createSagaMiddleware from "@redux-saga/core";
+import { useDispatch } from "react-redux";
+
 
 const sagaMiddleWare = createSagaMiddleware();
 
@@ -33,6 +35,7 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const keycloakRealmName = getKeyCloakRealmFromLS();
   const isLoggedIn = keycloak.authenticated;
+  const dispatch = useDispatch();
   // console.log("============>>><<<<<<", JSON.stringify(keycloak));
   // var authenticatedUser = keycloak.idTokenParsed.name;
   // console.log("authenticatedUser", authenticatedUser);
@@ -58,6 +61,12 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
 
   // };
 
+  useEffect(() => {
+    if (keycloak.authenticated) {
+      dispatch(HeimdallActionGen.login());
+    }
+  }, [keycloak.authenticated]);
+
   async function test_data() {
     const options = {
       headers: {
@@ -81,7 +90,7 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
         return response;
         // return response.json();
       })
-      .then(function (data) {})
+      .then(function (data) { })
       .catch(function (err) {
         console.log(err);
       });
@@ -210,9 +219,9 @@ const PrivateRoute = ({ handleKeycloakRealmNameChange, children }) => {
       // sagaMiddleWare.run(notificationWatcher);
       // console.log("logged Innnnnn");
     } else if (loadingTime === 1 && isLoggedIn === false) {
-      alert("Error connection. Check your client id again!");
+      console.error("Error connection. Check your client id again!");
     } else if (loadingTime === 1) {
-      alert("Error connection. Check your client id again!");
+      console.error("Error connection. Check your client id again!");
       removeKeyCloakRealmOnLS();
       window.location.reload();
     }

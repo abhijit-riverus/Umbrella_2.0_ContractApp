@@ -1,5 +1,5 @@
 import HeimdallState, { getDefaultHeimdallState } from '../State/heimdallState';
-import { heimdallActions, REVIVETOKEN_SUCCESS, REVIVETOKEN_FAILURE, REVIVETOKEN, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE, PAGE_REFRESH, OFFLINE, ONLINE, ATTACHPASS, ACTIVATEPASS, GOTOSTYLLUS, STYLLUS, GOTOUMBRELA, UMBRELLA } from '../Actions/definitions';
+import { heimdallActions, REVIVETOKEN_SUCCESS, REVIVETOKEN_FAILURE, REVIVETOKEN, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE, PAGE_REFRESH, OFFLINE, ONLINE, ATTACHPASS, ACTIVATEPASS, GOTOSTYLLUS, STYLLUS, GOTOUMBRELA, UMBRELLA, LOGIN } from '../Actions/definitions';
 import HeimdallUtil from '../HeimdallUtil/heimdallUtil';
 import { AUTHURL } from '../../../Configuration/global';
 
@@ -15,7 +15,7 @@ export default function HeimdallReducer(state: HeimdallState = getDefaultHeimdal
             return { ...state, accessToken: 'LOGOUT', revivingToken: false, isLoggedIn: false };
         }
         case LOGOUT: {
-            return { ...state, logoutLoader: true };
+            return { ...state, logoutLoader: true, isLoggedIn: false };
         }
         /*case LOGOUT_SUCCESS: {
             localStorage.setItem('accessToken', 'LOGOUT');
@@ -53,6 +53,14 @@ export default function HeimdallReducer(state: HeimdallState = getDefaultHeimdal
                 platform: UMBRELLA
             }
         }
+
+        case LOGIN: {
+            return {
+                ...state,
+                loggedIn: true
+            }
+        }
+
         default: {
             return state;
         }

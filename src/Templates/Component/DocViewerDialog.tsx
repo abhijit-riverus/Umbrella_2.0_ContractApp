@@ -426,9 +426,9 @@ const DocViewerDialog = (props: Props) => {
                     </div>
                 </div>
             </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleSubmit}>Ok</Button>
+            <DialogActions className='flex-center'>
+                <Button onClick={handleClose} style={{ textTransform: 'capitalize', backgroundColor: 'rgba(0, 0, 0, 0.04)' }}>Cancel</Button>
+                <Button className='create-btn' onClick={handleSubmit}>Generate Draft</Button>
             </DialogActions>
         </Dialog>
     )
