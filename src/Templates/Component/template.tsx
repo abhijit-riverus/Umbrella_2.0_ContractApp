@@ -3,8 +3,9 @@ import SideNavbar from "../../UniversalComponents/SideNavbar/Container/sideNavBa
 import { History } from "history";
 import "../Design/template.scss";
 import ListView from "./ListView";
-import { DialogActions, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabel, Select, MenuItem, Divider, TextField } from '@material-ui/core';
+import { DialogActions, Button, Dialog, DialogContent, DialogTitle, FormControl, InputLabel, Select, MenuItem, TextField, Checkbox, ListItemText } from '@material-ui/core';
 import { TemplateData } from "../State/templateState";
+import { DOCUMENT_TYPES } from '../../Constants/const';
 
 interface Props {
     history: History;
@@ -36,6 +37,7 @@ const Template = (props: Props) => {
     const fileInput = useRef<any>(null);
     const [templateName, setTemplateName] = useState('');
     const [templates, setTempates] = useState<TemplateData[]>([]);
+    const [multipleTypes, setMultipleTypes] = useState<string[]>([]);
     useEffect(() => {
         if (selectTemplate !== 'upload') {
             setShowTemplateForm(false);
@@ -54,6 +56,7 @@ const Template = (props: Props) => {
     const handleClose = () => {
         setUploadedFiles([]);
         setSelectTemplate('');
+        setMultipleTypes([]);
         setOpen(false);
     };
 
@@ -131,6 +134,16 @@ const Template = (props: Props) => {
         setUploadedFiles(files_);
         setTemplateName(files[0].name);
     };
+
+    const handleMultipleTemplateTypes = (event: any) => {
+        const {
+            target: { value },
+        }: { target: { value: string[] } } = event;
+        console.log(value);
+        setMultipleTypes(
+            [...value]
+        );
+    };
     return (
         <div className="row">
             <div className="col-md-1" style={{ zIndex: 2 }}>
@@ -179,7 +192,7 @@ const Template = (props: Props) => {
                                     label="Please create a template from"
                                 >
                                     <MenuItem value={'upload'}>Upload new template</MenuItem>
-                                    <MenuItem value={'select'}>Select from Contract</MenuItem>
+                                    <MenuItem value={'contract'}>Select from Contract</MenuItem>
                                     <MenuItem value={'request'}>Request a template from Riverus</MenuItem>
                                 </Select>
                             </FormControl>
@@ -215,13 +228,15 @@ const Template = (props: Props) => {
                                     onChange={handleTemplateType}
                                     label="Template Type"
                                 >
-                                    <MenuItem value={'NDA'}>NDA</MenuItem>
-                                    <MenuItem value={'license'}>License Agreement</MenuItem>
+                                    {DOCUMENT_TYPES.map((type, index) => (
+                                        <MenuItem key={index} value={type}>{type}</MenuItem>
+                                    )
+                                    )}
                                 </Select>
                             </FormControl>
                         </div>
                     </div>}
-                    {selectTemplate == 'select' && <div className="row">
+                    {selectTemplate == 'contract' && <div className="row">
                         <div className="col-md-8">
                             <FormControl variant="outlined" className="formControl" fullWidth={true}>
                                 <InputLabel id="demo-simple-select-outlined-label">Select from List of Contract</InputLabel>
@@ -231,12 +246,38 @@ const Template = (props: Props) => {
                                     fullWidth={true}
                                     label="Select from List of Contract"
                                 >
+                                    { }
                                     <MenuItem value={'1'}>Contract 1</MenuItem>
                                     <MenuItem value={'2'}>Contract 2</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
                     </div>}
+                    {selectTemplate == 'request'
+                        && <div className="row">
+                            <div className="col-md-12">
+                                <FormControl fullWidth={true} variant="outlined" className="formControl">
+                                    <InputLabel id="demo-multiple-checkbox-label">Template Type(s)</InputLabel>
+                                    <Select
+                                        labelId="demo-multiple-checkbox-label"
+                                        id="demo-multiple-checkbox"
+                                        value={multipleTypes}
+                                        onChange={handleMultipleTemplateTypes}
+                                        label="Template Type"
+                                        multiple
+                                        renderValue={(value: any) => (<span>{value.join(', ')}</span>)}
+                                    >
+                                        {DOCUMENT_TYPES.map((type, index) => (
+                                            <MenuItem key={index} value={type}>
+                                                <Checkbox checked={multipleTypes.indexOf(type) > -1} />
+                                                <ListItemText primary={type} />
+                                            </MenuItem>
+                                        )
+                                        )}
+                                    </Select>
+                                </FormControl>
+                            </div>
+                        </div>}
                 </DialogContent>
                 <DialogActions>
                     <Button className="cancel-btn" onClick={handleClose} color="primary">
